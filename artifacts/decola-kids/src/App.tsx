@@ -58,7 +58,7 @@ function FloatingRocket({ className = "" }: { className?: string }) {
       animate={{ opacity: 0.85, y: [0, -8, 0], rotate: [-3, 3, -3] }}
       transition={{ opacity: { duration: 0.8 }, y: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
     >
-      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-8 h-8 md:w-14 md:h-14" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M32 4c7 6 11 14 11 22v12l4 6v6l-7-3h-16l-7 3v-6l4-6V26c0-8 4-16 11-22z" fill="var(--color-decola-yellow)" stroke="var(--color-decola-blue)" strokeWidth="2" strokeLinejoin="round" />
         <circle cx="32" cy="24" r="5" fill="#fff" stroke="var(--color-decola-blue)" strokeWidth="2" />
         <path d="M21 38l-6 4 4-10M43 38l6 4-4-10" fill="var(--color-decola-blue)" />
@@ -139,12 +139,12 @@ function Home() {
             </svg>
           </div>
 
-          {/* Decorative floating elements - kept subtle, hidden on small mobile */}
-          <FloatingRocket className="hidden md:block top-2 right-6 lg:right-10" />
-          <FloatingStar className="top-6 left-[6%] text-decola-yellow" size={20} delay={0.2} />
-          <FloatingStar className="top-1/3 right-[12%] text-decola-orange md:hidden lg:block" size={14} delay={1} />
-          <FloatingStar className="bottom-10 left-[15%] text-decola-purple" size={18} delay={2} />
-          <FloatingLetter className="top-12 right-[20%] text-decola-blue/30 text-3xl md:text-4xl hidden sm:block" delay={0.5}>A</FloatingLetter>
+          {/* Decorative floating elements */}
+          <FloatingRocket className="top-2 right-2 md:right-6 lg:right-10" />
+          <FloatingStar className="top-6 left-[6%] text-decola-yellow hidden sm:block" size={20} delay={0.2} />
+          <FloatingStar className="top-1/3 right-[12%] text-decola-orange hidden md:block" size={14} delay={1} />
+          <FloatingStar className="bottom-10 left-[15%] text-decola-purple hidden sm:block" size={18} delay={2} />
+          <FloatingLetter className="top-12 right-[20%] text-decola-blue/30 text-3xl md:text-4xl hidden md:block" delay={0.5}>A</FloatingLetter>
           <FloatingLetter className="bottom-16 right-[8%] text-decola-orange/40 text-2xl md:text-3xl hidden md:block" delay={1.8}>B</FloatingLetter>
           <FloatingLetter className="top-1/2 left-[3%] text-decola-purple/40 text-2xl md:text-3xl hidden md:block" delay={3}>C</FloatingLetter>
           
