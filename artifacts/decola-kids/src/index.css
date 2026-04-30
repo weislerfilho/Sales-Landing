@@ -43,6 +43,8 @@
   --color-decola-yellow: hsl(var(--decola-yellow));
   --color-decola-green: hsl(var(--decola-green));
   --color-decola-orange: hsl(var(--decola-orange));
+  --color-decola-purple: hsl(var(--decola-purple));
+  --color-decola-teal: hsl(var(--decola-teal));
 
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
@@ -125,11 +127,13 @@
   --input: 214 32% 91%;
   --ring: 221 83% 53%;
 
-  /* Decola Brand Colors */
-  --decola-blue: 212 96% 54%;
-  --decola-yellow: 45 93% 47%;
-  --decola-green: 142 71% 45%; /* #22c55e */
-  --decola-orange: 25 95% 53%;
+  /* Decola Brand Colors (alinhadas à logo Decola Kids) */
+  --decola-blue: 218 60% 28%;     /* navy escuro do "D" */
+  --decola-yellow: 36 92% 52%;    /* amarelo/âmbar do foguete */
+  --decola-green: 142 70% 42%;    /* verde do CTA (combina com lime da logo) */
+  --decola-orange: 25 95% 55%;    /* laranja vibrante */
+  --decola-purple: 261 47% 70%;   /* roxo suave do "a" */
+  --decola-teal: 174 55% 55%;     /* turquesa do "e" */
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: Georgia, serif;

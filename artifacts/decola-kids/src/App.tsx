@@ -65,9 +65,19 @@ function Home() {
       </div>
 
       <div className="pt-14"> {/* Offset for urgency bar */}
-        
+
+        {/* LOGO HEADER */}
+        <header className="w-full flex justify-center pt-6 pb-2 md:pt-10 md:pb-4 px-6">
+          <img
+            src="/decola-kids-logo.png"
+            alt="Decola Kids - Alfabetização que dá asas ao futuro"
+            className="w-[180px] md:w-[240px] lg:w-[260px] h-auto select-none"
+            draggable={false}
+          />
+        </header>
+
         {/* 2. HERO */}
-        <section className="relative px-6 py-12 md:py-20 max-w-5xl mx-auto overflow-hidden">
+        <section className="relative px-6 pt-4 pb-12 md:pt-6 md:pb-20 max-w-5xl mx-auto overflow-hidden">
           <div className="absolute top-0 right-0 -z-10 opacity-20 transform translate-x-1/3 -translate-y-1/4">
             <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <path fill="var(--color-decola-yellow)" d="M45,-75.4C58.3,-68.8,69,-55.5,76.5,-40.7C84,-25.9,88.3,-9.6,86.6,5.9C84.9,21.5,77.3,36.2,66.6,48.2C55.9,60.2,42.1,69.5,26.9,76C11.7,82.5,-4.4,86.2,-19.7,82.7C-35,79.2,-49.6,68.5,-60.3,55.1C-71,41.7,-77.8,25.6,-80.6,9.1C-83.4,-7.5,-82.2,-24.5,-74.6,-38.7C-67,-52.9,-53,-64.3,-38.4,-70.5C-23.8,-76.7,-8.6,-77.7,6.8,-78.9C22.1,-80,31.7,-82,45,-75.4Z" transform="translate(100 100)" />
@@ -485,9 +495,13 @@ function Home() {
         {/* 15. RODAPÉ */}
         <footer className="py-12 bg-slate-900 text-slate-400 text-sm text-center">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="font-bold text-white text-xl mb-4 flex items-center justify-center gap-2">
-              <Sparkles className="w-5 h-5 text-decola-yellow" />
-              Decola Kids
+            <div className="mb-4 flex items-center justify-center bg-white rounded-2xl py-3 px-6 mx-auto w-fit shadow-md">
+              <img
+                src="/decola-kids-logo.png"
+                alt="Decola Kids"
+                className="w-[140px] h-auto select-none"
+                draggable={false}
+              />
             </div>
             <p className="mb-4">contato@decolakids.com.br</p>
             <div className="flex justify-center gap-6 mb-8">
