@@ -123,7 +123,7 @@ function Home() {
           <motion.img
             src="/decola-kids-logo.png"
             alt="Decola Kids - Alfabetização que dá asas ao futuro"
-            className="w-[200px] sm:w-[230px] md:w-[280px] lg:w-[300px] h-auto select-none"
+            className="w-[240px] sm:w-[280px] md:w-[330px] lg:w-[360px] h-auto select-none"
             draggable={false}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
