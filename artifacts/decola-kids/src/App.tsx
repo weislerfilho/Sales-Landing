@@ -14,6 +14,60 @@ import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
 
+/* ============================================================
+   Decorative animated elements (sutis, leves, on-brand)
+   ============================================================ */
+function FloatingStar({ className = "", size = 16, delay = 0 }: { className?: string; size?: number; delay?: number }) {
+  return (
+    <motion.svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={`absolute pointer-events-none opacity-70 drop-shadow-sm ${className}`}
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={{ opacity: [0.45, 0.9, 0.45], scale: [0.9, 1.05, 0.9], y: [0, -6, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
+    >
+      <path d="M12 2l2.39 6.95H22l-6.2 4.5 2.39 6.95L12 16.9l-6.19 3.5 2.39-6.95L2 8.95h7.61L12 2z" />
+    </motion.svg>
+  );
+}
+
+function FloatingLetter({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.span
+      aria-hidden="true"
+      className={`absolute pointer-events-none font-extrabold select-none ${className}`}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: [0.5, 0.9, 0.5], y: [0, -10, 0], rotate: [-4, 4, -4] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay }}
+    >
+      {children}
+    </motion.span>
+  );
+}
+
+function FloatingRocket({ className = "" }: { className?: string }) {
+  return (
+    <motion.div
+      aria-hidden="true"
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 0.85, y: [0, -8, 0], rotate: [-3, 3, -3] }}
+      transition={{ opacity: { duration: 0.8 }, y: { duration: 4, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
+    >
+      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 4c7 6 11 14 11 22v12l4 6v6l-7-3h-16l-7 3v-6l4-6V26c0-8 4-16 11-22z" fill="var(--color-decola-yellow)" stroke="var(--color-decola-blue)" strokeWidth="2" strokeLinejoin="round" />
+        <circle cx="32" cy="24" r="5" fill="#fff" stroke="var(--color-decola-blue)" strokeWidth="2" />
+        <path d="M21 38l-6 4 4-10M43 38l6 4-4-10" fill="var(--color-decola-blue)" />
+        <path d="M28 50c1 3 2 5 4 7 2-2 3-4 4-7" stroke="var(--color-decola-orange)" strokeWidth="3" strokeLinecap="round" fill="none" />
+      </svg>
+    </motion.div>
+  );
+}
+
 // Smooth scroll utility
 const scrollToOffer = () => {
   const offerSection = document.getElementById("oferta");
@@ -29,12 +83,10 @@ function Home() {
 
   useEffect(() => {
     const date = new Date();
-    const formattedDate = date.toLocaleDateString("pt-BR", {
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-    });
-    setCurrentDate(formattedDate);
+    const dd = String(date.getDate()).padStart(2, "0");
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const yyyy = date.getFullYear();
+    setCurrentDate(`${dd}/${mm}/${yyyy}`);
   }, []);
 
   const fadeIn = {
@@ -67,12 +119,15 @@ function Home() {
       <div className="pt-14"> {/* Offset for urgency bar */}
 
         {/* LOGO HEADER */}
-        <header className="w-full flex justify-center pt-6 pb-2 md:pt-10 md:pb-4 px-6">
-          <img
+        <header className="w-full bg-white flex justify-center pt-6 pb-3 md:pt-10 md:pb-6 px-6">
+          <motion.img
             src="/decola-kids-logo.png"
             alt="Decola Kids - Alfabetização que dá asas ao futuro"
-            className="w-[180px] md:w-[240px] lg:w-[260px] h-auto select-none"
+            className="w-[200px] sm:w-[230px] md:w-[280px] lg:w-[300px] h-auto select-none"
             draggable={false}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           />
         </header>
 
@@ -83,6 +138,15 @@ function Home() {
               <path fill="var(--color-decola-yellow)" d="M45,-75.4C58.3,-68.8,69,-55.5,76.5,-40.7C84,-25.9,88.3,-9.6,86.6,5.9C84.9,21.5,77.3,36.2,66.6,48.2C55.9,60.2,42.1,69.5,26.9,76C11.7,82.5,-4.4,86.2,-19.7,82.7C-35,79.2,-49.6,68.5,-60.3,55.1C-71,41.7,-77.8,25.6,-80.6,9.1C-83.4,-7.5,-82.2,-24.5,-74.6,-38.7C-67,-52.9,-53,-64.3,-38.4,-70.5C-23.8,-76.7,-8.6,-77.7,6.8,-78.9C22.1,-80,31.7,-82,45,-75.4Z" transform="translate(100 100)" />
             </svg>
           </div>
+
+          {/* Decorative floating elements - kept subtle, hidden on small mobile */}
+          <FloatingRocket className="hidden md:block top-2 right-6 lg:right-10" />
+          <FloatingStar className="top-6 left-[6%] text-decola-yellow" size={20} delay={0.2} />
+          <FloatingStar className="top-1/3 right-[12%] text-decola-orange md:hidden lg:block" size={14} delay={1} />
+          <FloatingStar className="bottom-10 left-[15%] text-decola-purple" size={18} delay={2} />
+          <FloatingLetter className="top-12 right-[20%] text-decola-blue/30 text-3xl md:text-4xl hidden sm:block" delay={0.5}>A</FloatingLetter>
+          <FloatingLetter className="bottom-16 right-[8%] text-decola-orange/40 text-2xl md:text-3xl hidden md:block" delay={1.8}>B</FloatingLetter>
+          <FloatingLetter className="top-1/2 left-[3%] text-decola-purple/40 text-2xl md:text-3xl hidden md:block" delay={3}>C</FloatingLetter>
           
           <motion.div
             className="max-w-3xl mx-auto text-center z-10 relative"
@@ -148,17 +212,20 @@ function Home() {
         </section>
 
         {/* 4. QUEBRA DE CRENÇA */}
-        <section className="py-20 px-6 relative overflow-hidden bg-decola-blue">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600 rounded-l-[100px] opacity-50 pointer-events-none"></div>
-          
-          <div className="max-w-4xl mx-auto text-center text-white relative z-10">
+        <section className="py-20 px-6 relative overflow-hidden bg-[#EEF4FF]">
+          {/* Subtle decorative stars */}
+          <FloatingStar className="top-10 left-[8%] text-decola-yellow" size={18} delay={0} />
+          <FloatingStar className="bottom-12 right-[10%] text-decola-orange" size={22} delay={1.5} />
+          <FloatingStar className="top-1/2 right-[6%] text-decola-purple" size={14} delay={0.8} />
+
+          <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-              <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight text-decola-blue">
                 Não é falta de inteligência do seu filho.<br />
-                <span className="text-decola-yellow">E também não é culpa sua.</span>
+                <span className="text-decola-orange">E também não é culpa sua.</span>
               </h2>
-              <p className="text-xl md:text-2xl text-blue-50 max-w-3xl mx-auto leading-relaxed font-medium">
-                O verdadeiro problema é a <span className="font-bold text-white underline decoration-blue-400 underline-offset-4">falta de método</span>. As escolas exigem resultados, mas raramente ensinam os pais a ajudarem em casa de forma que não gere estresse. Vocês dois só precisam do passo a passo certo.
+              <p className="text-lg md:text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-medium">
+                O verdadeiro problema é a <span className="font-bold text-decola-blue underline decoration-decola-yellow decoration-[3px] underline-offset-4">falta de método</span>. As escolas exigem resultados, mas raramente ensinam os pais a ajudarem em casa de forma que não gere estresse. Vocês dois só precisam do passo a passo certo.
               </p>
             </motion.div>
           </div>

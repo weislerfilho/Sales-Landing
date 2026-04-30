@@ -1,0 +1,137 @@
+AJUSTES VISUAIS E DE IDENTIDADE - DECOLA KIDS
+
+Faça as seguintes melhorias no site atual:
+
+---
+
+1. LOGO MAIOR E SEM FUNDO
+
+---
+
+* Substituir a logo atual pela nova versão enviada (SEM FUNDO / PNG transparente)
+* Aumentar significativamente o tamanho da logo
+
+Configuração:
+
+* Desktop: entre 220px e 300px de largura
+* Mobile: entre 160px e 220px
+* Centralizada no topo
+* Manter proporção (não distorcer)
+* Garantir bom espaçamento acima e abaixo
+
+Objetivo:
+Destacar a marca como elemento principal da página
+
+---
+
+2. COR DO FUNDO ATRÁS DA LOGO
+
+---
+
+* Garantir que o fundo atrás da logo seja branco ou muito claro
+* Evitar qualquer fundo que "brigue" com as cores da logo
+* A logo deve parecer limpa, integrada e profissional
+
+---
+
+3. FORMATO DA DATA (URGÊNCIA)
+
+---
+
+Na barra vermelha do topo, alterar o formato da data para números:
+
+Formato desejado:
+"OFERTA VÁLIDA APENAS HOJE - 30/04/2026"
+
+Implementar com JavaScript pegando a data atual do usuário
+
+---
+
+4. AJUSTE DA SEÇÃO AZUL (QUEBRA DE CRENÇA)
+
+---
+
+Problema:
+A seção azul atual está muito forte e destoando do restante do site
+
+Correção:
+
+* Substituir o fundo azul escuro por um tom mais suave e clean
+  Sugestões:
+  #F8FAFC (cinza claro) OU
+  #EEF4FF (azul bem leve)
+
+* Manter contraste no texto (texto escuro)
+
+* Destacar a frase principal usando cores da marca:
+
+  * Azul da logo para texto principal
+  * Laranja/amarelo da logo para destaque
+
+* Remover blocos pesados ou formas exageradas
+
+Objetivo:
+Manter elegância e consistência visual com o restante da página
+
+---
+
+5. MICRO ANIMAÇÕES TEMÁTICAS (DECOLA KIDS)
+
+---
+
+Adicionar animações leves e sutis relacionadas ao tema infantil:
+
+Pode incluir:
+
+* Pequeno foguete (remetendo ao "decola")
+* Letras flutuando suavemente (A, B, C)
+* Estrelinhas ou elementos educativos leves
+
+Regras importantes:
+
+* Animações suaves (fade, float, leve movimento)
+* NÃO exagerar
+* NÃO prejudicar performance
+* NÃO distrair do CTA
+
+Sugestões:
+
+* Uma animação leve próxima à hero
+* Pequenos detalhes em seções estratégicas
+
+---
+
+6. ELEMENTOS VISUAIS INFANTIS (ELEGANTES)
+
+---
+
+Adicionar elementos decorativos leves como:
+
+* Letras
+* Livros
+* Estrelas
+* Pequenos personagens ilustrados
+
+IMPORTANTE:
+
+* Estilo minimalista
+* Usar poucas unidades
+* Manter visual limpo e profissional
+
+---
+
+7. PERFORMANCE E UX
+
+---
+
+* Garantir que animações não deixem o site lento
+* Priorizar carregamento rápido
+* Responsividade perfeita no mobile
+
+---
+
+OBJETIVO
+
+---
+
+Deixar o site mais profissional, visualmente equilibrado, com identidade forte e mais agradável, aumentando a confiança e a conversão.
