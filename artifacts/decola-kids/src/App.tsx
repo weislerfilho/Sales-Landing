@@ -157,11 +157,10 @@ function Home() {
         </section>
 
         {/* 4. QUEBRA DE CRENÇA */}
-        <section className="py-20 px-6 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full -z-10 bg-decola-blue"></div>
-          <div className="absolute top-0 right-0 w-1/2 h-full -z-10 bg-blue-600 rounded-l-[100px] opacity-50"></div>
+        <section className="py-20 px-6 relative overflow-hidden bg-decola-blue">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600 rounded-l-[100px] opacity-50 pointer-events-none"></div>
           
-          <div className="max-w-4xl mx-auto text-center text-white">
+          <div className="max-w-4xl mx-auto text-center text-white relative z-10">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
               <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight">
                 Não é falta de inteligência do seu filho.<br />
