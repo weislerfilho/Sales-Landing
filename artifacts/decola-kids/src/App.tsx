@@ -153,7 +153,7 @@ function Home() {
             initial="hidden" animate="visible" variants={fadeIn} transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6">
-              Seu filho começando a ler com confiança — <span className="text-decola-blue">mesmo que hoje tenha dificuldade</span>
+              Seu filho começando a ler com confiança <span className="text-decola-blue">mesmo que hoje tenha dificuldade</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-600 mb-8 font-medium max-w-2xl mx-auto">
               Com apenas 15 minutos por dia usando o Método Decola Kids™.
