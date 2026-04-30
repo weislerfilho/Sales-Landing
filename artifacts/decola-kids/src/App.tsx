@@ -141,12 +141,12 @@ function Home() {
 
           {/* Decorative floating elements */}
           <FloatingRocket className="top-2 right-2 md:right-6 lg:right-10" />
-          <FloatingStar className="top-6 left-[6%] text-decola-yellow hidden sm:block" size={20} delay={0.2} />
-          <FloatingStar className="top-1/3 right-[12%] text-decola-orange hidden md:block" size={14} delay={1} />
-          <FloatingStar className="bottom-10 left-[15%] text-decola-purple hidden sm:block" size={18} delay={2} />
-          <FloatingLetter className="top-12 right-[20%] text-decola-blue/30 text-3xl md:text-4xl hidden md:block" delay={0.5}>A</FloatingLetter>
-          <FloatingLetter className="bottom-16 right-[8%] text-decola-orange/40 text-2xl md:text-3xl hidden md:block" delay={1.8}>B</FloatingLetter>
-          <FloatingLetter className="top-1/2 left-[3%] text-decola-purple/40 text-2xl md:text-3xl hidden md:block" delay={3}>C</FloatingLetter>
+          <FloatingStar className="top-6 left-2 md:left-[6%] text-decola-yellow" size={16} delay={0.2} />
+          <FloatingStar className="top-1/3 right-2 md:right-[12%] text-decola-orange" size={12} delay={1} />
+          <FloatingStar className="bottom-8 left-2 md:left-[15%] text-decola-purple" size={14} delay={2} />
+          <FloatingLetter className="top-[15%] right-2 md:top-12 md:right-[20%] text-decola-blue/30 text-lg md:text-3xl lg:text-4xl" delay={0.5}>A</FloatingLetter>
+          <FloatingLetter className="bottom-20 right-2 md:right-[8%] text-decola-orange/40 text-lg md:text-2xl lg:text-3xl" delay={1.8}>B</FloatingLetter>
+          <FloatingLetter className="top-1/2 left-2 md:left-[3%] text-decola-purple/40 text-lg md:text-2xl lg:text-3xl" delay={3}>C</FloatingLetter>
           
           <motion.div
             className="max-w-3xl mx-auto text-center z-10 relative"
