@@ -1,0 +1,245 @@
+Crie um site de vendas (landing page) altamente persuasivo, moderno e responsivo para um produto digital chamado "Decola Kids", focado em alfabetização infantil.
+
+Público-alvo: mães de crianças entre 4 e 7 anos com dificuldade na leitura.
+
+---
+
+## 🎨 DESIGN E ESTILO
+
+* Layout clean, moderno e profissional
+* Fundo branco ou tons muito claros (clean)
+* Uso leve de cores infantis (azul, amarelo, verde, laranja)
+* Evitar poluição visual
+* Tipografia amigável e legível
+
+IMPORTANTE:
+
+* TODOS os botões (CTA) devem ser na cor VERDE (#22c55e ou similar)
+* Botões grandes, com cantos arredondados
+* Hover levemente mais escuro
+* Destaque máximo para os CTAs
+
+---
+
+## 🔴 BARRA DE URGÊNCIA (TOPO FIXO)
+
+Criar uma faixa vermelha fixa no topo com:
+
+"OFERTA VÁLIDA APENAS HOJE - [DATA ATUAL]"
+
+A data deve ser gerada automaticamente via JavaScript com base no dia atual do usuário.
+
+---
+
+1. HERO
+
+---
+
+Título:
+"Seu filho começando a ler com confiança — mesmo que hoje tenha dificuldade"
+
+Subtítulo:
+"Com apenas 15 minutos por dia usando o Método Decola Kids™"
+
+Botão verde:
+"Quero ajudar meu filho agora"
+
+Adicionar:
+
+* Ilustração infantil leve
+* Destaque visual para o nome Decola Kids
+
+---
+
+2. DOR EMOCIONAL
+
+---
+
+Texto abordando:
+
+* Frustração na lição de casa
+* Criança não evoluindo
+* Culpa da mãe
+* Medo de atraso escolar
+
+---
+
+3. QUEBRA DE CRENÇA
+
+---
+
+"Não é falta de inteligência. E também não é culpa sua."
+
+Explicar que o problema é falta de método.
+
+---
+
+4. MÉTODO DECOLA KIDS™
+
+---
+
+Explicar as 4 etapas:
+
+* Sons e letras
+* Sílabas
+* Leitura guiada
+* Autonomia
+
+---
+
+5. COMO FUNCIONA
+
+---
+
+* 15 minutos por dia
+* Passo a passo simples
+* Sem precisar ser professora
+* Atividades prontas
+
+---
+
+6. BENEFÍCIOS
+
+---
+
+* Mais confiança
+* Menos estresse
+* Evolução visível
+* Criança motivada
+
+---
+
+7. CONTEÚDO
+
+---
+
+* Plano de 4 semanas
+* Rotina diária
+* Atividades organizadas
+* +2.000 atividades
+
+Frase destaque:
+"Você não precisa de milhares de atividades, e sim da atividade certa na hora certa"
+
+---
+
+8. BÔNUS (COM VALORES)
+
+---
+
+* Rotina de 15 minutos (R$19,90)
+* Guia para mães (R$29,90)
+* Atividades extras (R$17,90)
+* Lista de palavras (R$12,90)
+
+---
+
+9. DEPOIMENTOS (CARROSSEL)
+
+---
+
+Criar carrossel horizontal com cards quadrados.
+
+Cada card:
+
+* Avatar circular
+* Nome + filho
+* Texto estilo WhatsApp
+
+Depoimentos:
+
+Carla Mendes:
+“Eu tava ficando desesperada já… meu filho não conseguia juntar as letras 😔 comecei fazendo 15 min por dia e em menos de 2 semanas ele já tava lendo 😳”
+
+Juliana Rocha:
+“Eu não sou professora… mas esse passo a passo ajuda demais! minha filha pede pra estudar kkk ❤️”
+
+Patrícia Alves:
+“Meu filho tava atrasado e eu me sentia péssima 😞 agora ele tá muito mais confiante”
+
+Fernanda Souza:
+“Comprei sem expectativa… mas me surpreendi! muito organizado”
+
+Renata Oliveira:
+“Antes era briga todo dia 😩 agora virou rotina tranquila”
+
+Aline Costa:
+“Agora sei exatamente o que fazer, não fico mais perdida”
+
+---
+
+10. GARANTIA
+
+---
+
+"7 dias de garantia incondicional"
+
+---
+
+11. OFERTA (ANCORAGEM)
+
+---
+
+Mostrar:
+
+De: R$97,00 (riscado)
+Por: R$10,90
+
+Texto:
+"Hoje você tem acesso completo por um valor simbólico"
+
+Botão verde:
+"Quero começar agora"
+
+---
+
+12. URGÊNCIA FINAL
+
+---
+
+"Essa condição pode sair do ar a qualquer momento"
+
+---
+
+13. FAQ (COM RESPOSTAS)
+
+---
+
+Preciso imprimir?
+Sim, o material é em PDF.
+
+Funciona se meu filho não sabe nada?
+Sim, começa do básico.
+
+Quanto tempo por dia?
+15 minutos.
+
+Como recebo?
+Por e-mail após a compra.
+
+Preciso ter experiência?
+Não, é feito para iniciantes.
+
+---
+
+14. RODAPÉ
+
+---
+
+* Decola Kids
+* Contato
+* Termos simples
+
+---
+
+## 💻 REQUISITOS TÉCNICOS
+
+* HTML + CSS + JavaScript
+* Responsivo (mobile-first)
+* Scroll suave
+* Micro animações leves
+* Botões com destaque
+* Carrossel funcional
+* Código organizado
+
+FOCO TOTAL EM CONVERSÃO

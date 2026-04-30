@@ -1,0 +1,44 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "5b9v2OaoZGZ9_l7DtgKVb"
+uri = "file://artifacts/decola-kids/public/hero-illustration.png"
+type = "image"
+title = "Happy child reading book illustration"
+
+[[generated]]
+id = "HLUzgXA_Yc9qDTk7VA0EU"
+uri = "file://artifacts/decola-kids/public/avatar-1.png"
+type = "image"
+title = "Avatar Carla Mendes"
+
+[[generated]]
+id = "t7QcEvtSdrSIGHAKkmwQz"
+uri = "file://artifacts/decola-kids/public/avatar-2.png"
+type = "image"
+title = "Avatar Juliana Rocha"
+
+[[generated]]
+id = "rFS0asm1cqBEzPCE6Yez9"
+uri = "file://artifacts/decola-kids/public/avatar-3.png"
+type = "image"
+title = "Avatar Patricia Alves"
+
+[[generated]]
+id = "OUjjQcfgLIyttjypl2TLM"
+uri = "file://artifacts/decola-kids/public/avatar-4.png"
+type = "image"
+title = "Avatar Fernanda Souza"
+
+[[generated]]
+id = "96-IbI4plM1tukXL6LOen"
+uri = "file://artifacts/decola-kids/public/avatar-5.png"
+type = "image"
+title = "Avatar Renata Oliveira"
+
+[[generated]]
+id = "IjJASstnI0OM4eOGAEyY-"
+uri = "file://artifacts/decola-kids/public/avatar-6.png"
+type = "image"
+title = "Avatar Aline Costa"

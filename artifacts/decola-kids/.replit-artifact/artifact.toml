@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Decola Kids - Landing Page"
+version = "1.0.0"
+id = "artifacts/decola-kids"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20371
+
+[services.development]
+run = "pnpm --filter @workspace/decola-kids run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/decola-kids", "run", "build" ]
+publicDir = "artifacts/decola-kids/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20371"
+BASE_PATH = "/"
