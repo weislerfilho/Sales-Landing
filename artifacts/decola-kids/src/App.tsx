@@ -378,7 +378,7 @@ function Home() {
               <div className="p-5 sm:p-8 md:p-12 lg:p-16 grid lg:grid-cols-2 gap-12 relative z-10">
                 
                 {/* Left: Bonuses */}
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-2xl font-bold mb-6 text-white">Comprando hoje, você leva:</h3>
                   
                   <div className="space-y-4 mb-8">
@@ -414,7 +414,7 @@ function Home() {
                 </div>
 
                 {/* Right: Checkout */}
-                <div className="bg-white text-slate-900 rounded-3xl p-5 sm:p-8 text-center flex flex-col justify-center items-center shadow-2xl relative">
+                <div className="bg-white text-slate-900 rounded-3xl p-5 sm:p-8 text-center flex flex-col justify-center items-center shadow-2xl relative min-w-0">
                   <div className="absolute -top-4 bg-red-500 text-white font-bold px-6 py-1.5 rounded-full text-sm animate-pulse">
                     OFERTA ENCERRANDO
                   </div>
@@ -425,9 +425,9 @@ function Home() {
                     <span className="text-lg text-slate-400 font-medium line-through decoration-red-500">De: R$ 97,00</span>
                   </div>
                   
-                  <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-1 md:gap-2 mb-6">
+                  <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-1 md:gap-2 mb-6 w-full">
                     <span className="text-xl md:text-2xl font-bold text-slate-700 md:mt-2">Por apenas</span>
-                    <span className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tighter leading-none whitespace-nowrap">R$10,90</span>
+                    <span className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tighter leading-none">R$10,90</span>
                   </div>
                   
                   <p className="text-sm font-medium text-slate-500 mb-8 bg-slate-50 py-2 px-4 rounded-lg w-full">
