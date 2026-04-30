@@ -375,7 +375,7 @@ function Home() {
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-decola-blue rounded-full blur-3xl opacity-20 pointer-events-none"></div>
               <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-decola-green rounded-full blur-3xl opacity-20 pointer-events-none"></div>
               
-              <div className="p-8 md:p-12 lg:p-16 grid lg:grid-cols-2 gap-12 relative z-10">
+              <div className="p-5 sm:p-8 md:p-12 lg:p-16 grid lg:grid-cols-2 gap-12 relative z-10">
                 
                 {/* Left: Bonuses */}
                 <div>
@@ -407,14 +407,14 @@ function Home() {
                     </div>
                   </div>
                   
-                  <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 flex justify-between items-center">
-                    <span className="text-slate-300">Valor Total (Bônus + Método):</span>
-                    <span className="text-red-400 font-bold line-through">R$ 177,60</span>
+                  <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 flex flex-wrap gap-2 justify-between items-center">
+                    <span className="text-slate-300 text-sm sm:text-base">Valor Total (Bônus + Método):</span>
+                    <span className="text-red-400 font-bold line-through text-sm sm:text-base">R$ 177,60</span>
                   </div>
                 </div>
 
                 {/* Right: Checkout */}
-                <div className="bg-white text-slate-900 rounded-3xl p-8 text-center flex flex-col justify-center items-center shadow-2xl relative">
+                <div className="bg-white text-slate-900 rounded-3xl p-5 sm:p-8 text-center flex flex-col justify-center items-center shadow-2xl relative">
                   <div className="absolute -top-4 bg-red-500 text-white font-bold px-6 py-1.5 rounded-full text-sm animate-pulse">
                     OFERTA ENCERRANDO
                   </div>
@@ -425,9 +425,9 @@ function Home() {
                     <span className="text-lg text-slate-400 font-medium line-through decoration-red-500">De: R$ 97,00</span>
                   </div>
                   
-                  <div className="flex items-start justify-center gap-1 mb-6">
-                    <span className="text-2xl font-bold text-slate-700 mt-2">Por apenas</span>
-                    <span className="text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tighter">R$10,90</span>
+                  <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-1 md:gap-2 mb-6">
+                    <span className="text-xl md:text-2xl font-bold text-slate-700 md:mt-2">Por apenas</span>
+                    <span className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-slate-900 tracking-tighter leading-none whitespace-nowrap">R$10,90</span>
                   </div>
                   
                   <p className="text-sm font-medium text-slate-500 mb-8 bg-slate-50 py-2 px-4 rounded-lg w-full">
