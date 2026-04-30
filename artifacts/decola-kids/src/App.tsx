@@ -390,7 +390,7 @@ function Home() {
                   { name: "Renata Oliveira", avatar: "/avatar-5.png", text: "Antes era briga todo dia 😩 agora virou rotina tranquila" },
                   { name: "Aline Costa", avatar: "/avatar-6.png", text: "Agora sei exatamente o que fazer, não fico mais perdida" }
                 ].map((depoimento, index) => (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={index} className="pl-4 basis-[82%] sm:basis-[75%] md:basis-1/2 lg:basis-1/3">
                     <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-full flex flex-col">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100">
