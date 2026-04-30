@@ -121,15 +121,6 @@ function Home() {
                   className="w-full h-auto object-cover aspect-[4/3] md:aspect-square"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 animate-bounce flex items-center gap-3">
-                <div className="bg-green-100 p-2 rounded-full">
-                  <Heart className="w-6 h-6 text-green-600 fill-green-600" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 font-medium">Resultado</p>
-                  <p className="font-bold text-slate-800">Mais união, menos brigas</p>
-                </div>
-              </div>
             </motion.div>
           </div>
         </section>
@@ -394,7 +385,6 @@ function Home() {
                         { title: "Rotina de 15 minutos", value: "R$ 19,90" },
                         { title: "Guia para mães", value: "R$ 29,90" },
                         { title: "Atividades extras", value: "R$ 17,90" },
-                        { title: "Lista de palavras", value: "R$ 12,90" },
                       ].map((bonus, i) => (
                         <div key={i} className="flex justify-between items-center py-2">
                           <div className="flex items-center gap-2">
@@ -409,7 +399,7 @@ function Home() {
                   
                   <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 flex flex-wrap gap-2 justify-between items-center">
                     <span className="text-slate-300 text-sm sm:text-base">Valor Total (Bônus + Método):</span>
-                    <span className="text-red-400 font-bold line-through text-sm sm:text-base">R$ 177,60</span>
+                    <span className="text-red-400 font-bold line-through text-sm sm:text-base">R$ 164,70</span>
                   </div>
                 </div>
 
@@ -490,21 +480,6 @@ function Home() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
-        </section>
-
-        {/* 13. URGÊNCIA FINAL */}
-        <section className="py-16 px-6 bg-slate-50 text-center border-t border-slate-100">
-          <div className="max-w-2xl mx-auto">
-            <p className="text-red-500 font-bold mb-6 animate-pulse">
-              Essa condição pode sair do ar a qualquer momento.
-            </p>
-            <Button 
-              onClick={scrollToOffer}
-              className="bg-decola-green hover:bg-green-600 text-white border-green-700 text-xl font-bold py-8 px-10 rounded-2xl shadow-xl w-full md:w-auto"
-            >
-              Sim, quero garantir os R$10,90
-            </Button>
           </div>
         </section>
 
