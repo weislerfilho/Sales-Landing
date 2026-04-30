@@ -8,7 +8,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Heart, BookOpen, Star, Sparkles, Book, Lock, ShieldCheck, ArrowRight, Play, BookMarked, MessageCircle } from "lucide-react";
+import { CheckCircle2, Heart, BookOpen, Star, Sparkles, Book, Lock, ShieldCheck, ArrowRight, Play, BookMarked } from "lucide-react";
 import { motion } from "framer-motion";
 import NotFound from "@/pages/not-found";
 
@@ -84,55 +84,36 @@ function Home() {
             </svg>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-            <motion.div 
-              className="flex-1 text-center md:text-left z-10"
-              initial="hidden" animate="visible" variants={fadeIn} transition={{ duration: 0.6 }}
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 font-medium text-sm mb-6 border border-blue-100 shadow-sm">
-                <Sparkles className="w-4 h-4 text-decola-yellow" />
-                <span>Método Decola Kids™</span>
+          <motion.div
+            className="max-w-3xl mx-auto text-center z-10 relative"
+            initial="hidden" animate="visible" variants={fadeIn} transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6">
+              Seu filho começando a ler com confiança — <span className="text-decola-blue">mesmo que hoje tenha dificuldade</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-600 mb-8 font-medium max-w-2xl mx-auto">
+              Com apenas 15 minutos por dia usando o Método Decola Kids™.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                onClick={scrollToOffer}
+                className="bg-decola-green hover:bg-green-600 text-white border-green-700 text-lg py-7 px-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+              >
+                Quero ajudar meu filho agora
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-slate-500 font-medium">
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center overflow-hidden"><img src="/avatar-1.png" alt="" className="w-full h-full object-cover" /></div>
+                <div className="w-8 h-8 rounded-full border-2 border-white bg-green-100 flex items-center justify-center overflow-hidden"><img src="/avatar-2.png" alt="" className="w-full h-full object-cover" /></div>
+                <div className="w-8 h-8 rounded-full border-2 border-white bg-yellow-100 flex items-center justify-center overflow-hidden"><img src="/avatar-3.png" alt="" className="w-full h-full object-cover" /></div>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6">
-                Seu filho começando a ler com confiança — <span className="text-decola-blue">mesmo que hoje tenha dificuldade</span>
-              </h1>
-              <p className="text-lg md:text-xl text-slate-600 mb-8 font-medium max-w-2xl mx-auto md:mx-0">
-                Com apenas 15 minutos por dia usando o Método Decola Kids™.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <Button 
-                  onClick={scrollToOffer}
-                  className="bg-decola-green hover:bg-green-600 text-white border-green-700 text-lg py-7 px-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
-                >
-                  Quero ajudar meu filho agora
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </div>
-              
-              <div className="mt-8 flex items-center justify-center md:justify-start gap-4 text-sm text-slate-500 font-medium">
-                <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center overflow-hidden"><img src="/avatar-1.png" alt="" className="w-full h-full object-cover" /></div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-green-100 flex items-center justify-center overflow-hidden"><img src="/avatar-2.png" alt="" className="w-full h-full object-cover" /></div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-yellow-100 flex items-center justify-center overflow-hidden"><img src="/avatar-3.png" alt="" className="w-full h-full object-cover" /></div>
-                </div>
-                <span>Junte-se a centenas de mães</span>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="flex-1 w-full max-w-md mx-auto relative z-10"
-              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white bg-white">
-                <img 
-                  src="/hero-illustration.png" 
-                  alt="Criança lendo um livro feliz" 
-                  className="w-full h-auto object-cover aspect-[4/3] md:aspect-square"
-                />
-              </div>
-            </motion.div>
-          </div>
+              <span>Junte-se a centenas de mães</span>
+            </div>
+          </motion.div>
         </section>
 
         {/* 3. DOR EMOCIONAL */}
@@ -304,12 +285,6 @@ function Home() {
               ))}
             </div>
 
-            <div className="bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center relative">
-              <MessageCircle className="w-12 h-12 text-blue-200 absolute top-4 left-4" />
-              <p className="text-xl md:text-2xl font-medium text-blue-900 italic relative z-10">
-                "Você não precisa de milhares de atividades soltas pela internet. Você precisa da <span className="font-bold">atividade certa na hora certa</span>."
-              </p>
-            </div>
           </div>
         </section>
 
