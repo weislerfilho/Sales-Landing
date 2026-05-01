@@ -727,8 +727,7 @@ function Home() {
               <a href="#" className="hover:text-white transition-colors">Política de privacidade</a>
             </div>
             <p className="text-xs opacity-60">
-              Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. 
-              Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.
+              © 2026 Decola Kids™ — Todos os direitos reservados.
             </p>
           </div>
         </footer>
