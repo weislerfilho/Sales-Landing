@@ -557,7 +557,7 @@ function Home() {
                   </div>
 
                   <div className="relative w-full mb-2">
-                    <div className="absolute -top-2 -right-1 sm:-right-2 bg-decola-green text-white font-extrabold text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg rotate-[8deg] border-2 border-white">
+                    <div className="absolute -top-2 -right-1 sm:-right-2 bg-red-600 text-white font-extrabold text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg rotate-[8deg] border-2 border-white">
                       94% OFF
                     </div>
                     <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-decola-yellow/40 rounded-2xl py-5 px-4">
@@ -566,7 +566,7 @@ function Home() {
                     </div>
                   </div>
 
-                  <p className="text-sm font-semibold text-decola-green mb-6 bg-green-50 border border-green-100 py-2 px-4 rounded-lg w-full">
+                  <p className="text-sm font-semibold text-red-600 mb-6 bg-red-50 border border-red-100 py-2 px-4 rounded-lg w-full">
                     Você está recebendo tudo isso com mais de <span className="font-extrabold">94% de desconto</span>.
                   </p>
 
