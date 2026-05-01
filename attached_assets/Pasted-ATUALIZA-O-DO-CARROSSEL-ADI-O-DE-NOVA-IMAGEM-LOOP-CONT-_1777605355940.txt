@@ -1,0 +1,123 @@
+ATUALIZAÇÃO DO CARROSSEL — ADIÇÃO DE NOVA IMAGEM + LOOP CONTÍNUO
+
+---
+
+🖼️ ADICIONAR NOVO CARD
+
+Adicionar um novo card ao carrossel com a imagem do menino resolvendo a atividade (ângulo lateral).
+
+Configuração do card:
+
+Título:
+Aprendizado na prática
+
+Texto:
+"Em poucos minutos por dia, seu filho já começa a entender como a leitura funciona."
+
+---
+
+🎠 CORREÇÃO DO CARROSSEL (MUITO IMPORTANTE)
+
+Problema atual:
+
+* O carrossel “salta” de uma imagem para outra
+* Para no final e volta (quebra a fluidez)
+* Movimento não é constante
+
+---
+
+✅ NOVO COMPORTAMENTO (OBRIGATÓRIO)
+
+Transformar o carrossel em um **loop infinito contínuo**, estilo esteira (marquee suave)
+
+---
+
+⚙️ COMO DEVE FUNCIONAR
+
+* Movimento horizontal contínuo (sem parar)
+* Velocidade constante (não acelera nem desacelera)
+* NÃO deve “pular” slides
+* NÃO deve reiniciar bruscamente
+* Quando chegar no final, continua naturalmente (loop invisível)
+
+---
+
+🧠 IMPLEMENTAÇÃO (LÓGICA)
+
+* Duplicar todos os itens do carrossel (lista repetida 2x)
+
+* Usar animação contínua com:
+
+  transform: translateX()
+
+* Criar animação infinita com:
+
+  animation: linear infinite
+
+---
+
+🎯 CONFIGURAÇÃO DA ANIMAÇÃO
+
+* Duração: entre 20s e 35s (ajustar conforme quantidade de cards)
+* Timing: linear (IMPORTANTE — sem ease)
+* Movimento constante e suave
+
+---
+
+🖱️ INTERAÇÃO
+
+* Pausar animação ao passar o mouse (desktop)
+* Pausar ao tocar (mobile)
+* Retomar automaticamente depois
+
+---
+
+📱 RESPONSIVO
+
+Desktop:
+
+* Mostrar 3 cards visíveis
+
+Mobile:
+
+* Mostrar 1 card por vez
+* Movimento continua automático
+
+---
+
+🖼️ IMAGENS
+
+* Garantir que nenhuma imagem seja cortada
+
+* Usar:
+
+  object-fit: contain
+
+* Fundo neutro no container
+
+* Bordas arredondadas
+
+* Padding leve
+
+---
+
+🎨 VISUAL
+
+* Manter padrão da marca
+* Sombras leves
+* Espaçamento confortável entre cards
+* Transição suave e premium
+
+---
+
+🚀 OBJETIVO
+
+Transformar o carrossel em um elemento vivo da página:
+
+* Mais moderno
+* Mais fluido
+* Mais profissional
+* Mais agradável de assistir
+* Aumenta retenção e percepção de valor
+
+Sem travar. Sem saltos. Sem interrupções.
