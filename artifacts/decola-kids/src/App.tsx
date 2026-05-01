@@ -439,6 +439,79 @@ function Home() {
           </div>
         </section>
 
+        {/* PRODUTO — CARROSSEL VISUAL */}
+        <section className="py-20 px-6 bg-slate-50 overflow-hidden">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+              className="text-center mb-12"
+            >
+              <Badge variant="outline" className="mb-4 bg-blue-50 text-blue-700 border-blue-200">Veja por dentro</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Veja por dentro do Decola Kids</h2>
+              <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+                Antes de decidir, veja exatamente o que você vai usar com seu filho no dia a dia
+              </p>
+            </motion.div>
+
+            <Carousel
+              opts={{ align: "start", loop: true }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {[
+                  {
+                    img: "/produto-1.png",
+                    title: "Atividades simples, mas que funcionam",
+                    text: "Seu filho não fica perdido. Ele entende o que está fazendo — e isso muda tudo."
+                  },
+                  {
+                    img: "/produto-2.png",
+                    title: "Aprendizado que gera confiança",
+                    text: "Quando ele percebe que consegue, ele quer continuar. A motivação vem do progresso — não da pressão."
+                  },
+                  {
+                    img: "/produto-3.png",
+                    title: "Tudo pronto, organizado e acessível",
+                    text: "Você não precisa pensar nem planejar. É só abrir e aplicar."
+                  },
+                  {
+                    img: "/produto-4.png",
+                    title: "Você sabe exatamente o que fazer",
+                    text: "Sem gritos, sem frustração. Só um passo a passo claro que qualquer mãe consegue aplicar."
+                  }
+                ].map((card, i) => (
+                  <CarouselItem key={i} className="pl-4 basis-[85%] sm:basis-[70%] md:basis-1/2 lg:basis-1/3">
+                    <motion.div
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.08 }}
+                      whileHover={{ scale: 1.02 }}
+                      className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full flex flex-col transition-shadow hover:shadow-md"
+                    >
+                      <div className="w-full aspect-[4/3] overflow-hidden">
+                        <img
+                          src={card.img}
+                          alt={card.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-5 flex flex-col gap-2 flex-1">
+                        <h3 className="font-bold text-slate-900 text-base leading-snug">{card.title}</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed">{card.text}</p>
+                      </div>
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="hidden md:flex justify-center mt-8 gap-4">
+                <CarouselPrevious className="static translate-y-0" />
+                <CarouselNext className="static translate-y-0" />
+              </div>
+            </Carousel>
+          </div>
+        </section>
+
         {/* 10. DEPOIMENTOS */}
         <section className="py-20 px-6 bg-slate-50 overflow-hidden">
           <div className="max-w-6xl mx-auto">
