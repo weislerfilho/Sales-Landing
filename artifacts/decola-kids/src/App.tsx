@@ -246,14 +246,6 @@ function Home() {
               </Button>
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-4 text-sm text-slate-500 font-medium">
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center overflow-hidden"><img src="/avatar-1.png" alt="" className="w-full h-full object-cover" /></div>
-                <div className="w-8 h-8 rounded-full border-2 border-white bg-green-100 flex items-center justify-center overflow-hidden"><img src="/avatar-2.png" alt="" className="w-full h-full object-cover" /></div>
-                <div className="w-8 h-8 rounded-full border-2 border-white bg-yellow-100 flex items-center justify-center overflow-hidden"><img src="/avatar-3.png" alt="" className="w-full h-full object-cover" /></div>
-              </div>
-              <span>Junte-se a centenas de mães</span>
-            </div>
           </motion.div>
         </section>
 
@@ -671,15 +663,10 @@ function Home() {
                 ].map((depoimento, index) => (
                   <CarouselItem key={index} className="pl-4 basis-[82%] sm:basis-[75%] md:basis-1/2 lg:basis-1/3">
                     <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-full flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100">
-                          <img src={depoimento.avatar} alt={depoimento.name} className="w-full h-full object-cover" />
-                        </div>
-                        <div>
-                          <p className="font-bold text-slate-900">{depoimento.name}</p>
-                          <div className="flex text-yellow-400">
-                            {[1,2,3,4,5].map(star => <Star key={star} className="w-3 h-3 fill-current" />)}
-                          </div>
+                      <div className="mb-4">
+                        <p className="font-bold text-slate-900">{depoimento.name}</p>
+                        <div className="flex text-yellow-400 mt-1">
+                          {[1,2,3,4,5].map(star => <Star key={star} className="w-3 h-3 fill-current" />)}
                         </div>
                       </div>
                       <div className="bg-[#E1F5FE] p-4 rounded-xl rounded-tl-sm relative flex-1">
