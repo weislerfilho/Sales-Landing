@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -65,6 +66,99 @@ function FloatingRocket({ className = "" }: { className?: string }) {
         <path d="M28 50c1 3 2 5 4 7 2-2 3-4 4-7" stroke="var(--color-decola-orange)" strokeWidth="3" strokeLinecap="round" fill="none" />
       </svg>
     </motion.div>
+  );
+}
+
+const PRODUCT_CARDS = [
+  {
+    img: "/produto-1.png",
+    title: "Atividades simples, mas que funcionam",
+    text: "Seu filho não fica perdido. Ele entende o que está fazendo — e isso muda tudo."
+  },
+  {
+    img: "/produto-2.png",
+    title: "Aprendizado que gera confiança",
+    text: "Quando ele percebe que consegue, ele quer continuar. A motivação vem do progresso — não da pressão."
+  },
+  {
+    img: "/produto-3.png",
+    title: "Tudo pronto, organizado e acessível",
+    text: "Você não precisa pensar nem planejar. É só abrir e aplicar."
+  },
+  {
+    img: "/produto-4.png",
+    title: "Você sabe exatamente o que fazer",
+    text: "Sem gritos, sem frustração. Só um passo a passo claro que qualquer mãe consegue aplicar."
+  }
+];
+
+function ProductCarousel() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const autoplayPlugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }));
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
+
+  return (
+    <div>
+      <Carousel
+        setApi={setApi}
+        opts={{ align: "start", loop: true }}
+        plugins={[autoplayPlugin.current]}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-4">
+          {PRODUCT_CARDS.map((card, i) => (
+            <CarouselItem key={i} className="pl-4 basis-[85%] sm:basis-[70%] md:basis-1/2 lg:basis-1/3">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full flex flex-col transition-shadow hover:shadow-md"
+              >
+                <div className="w-full aspect-[4/3] bg-white flex items-center justify-center p-4">
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="p-5 flex flex-col gap-2 flex-1">
+                  <h3 className="font-bold text-slate-900 text-base leading-snug">{card.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{card.text}</p>
+                </div>
+              </motion.div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="hidden md:flex justify-center mt-8 gap-4">
+          <CarouselPrevious className="static translate-y-0" />
+          <CarouselNext className="static translate-y-0" />
+        </div>
+      </Carousel>
+
+      {/* Dot indicators */}
+      <div className="flex justify-center gap-2 mt-6">
+        {Array.from({ length: count }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => api?.scrollTo(i)}
+            className={`rounded-full transition-all duration-300 ${
+              i === current ? "w-6 h-2.5 bg-decola-blue" : "w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400"
+            }`}
+            aria-label={`Ir para slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -453,62 +547,7 @@ function Home() {
               </p>
             </motion.div>
 
-            <Carousel
-              opts={{ align: "start", loop: true }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                {[
-                  {
-                    img: "/produto-1.png",
-                    title: "Atividades simples, mas que funcionam",
-                    text: "Seu filho não fica perdido. Ele entende o que está fazendo — e isso muda tudo."
-                  },
-                  {
-                    img: "/produto-2.png",
-                    title: "Aprendizado que gera confiança",
-                    text: "Quando ele percebe que consegue, ele quer continuar. A motivação vem do progresso — não da pressão."
-                  },
-                  {
-                    img: "/produto-3.png",
-                    title: "Tudo pronto, organizado e acessível",
-                    text: "Você não precisa pensar nem planejar. É só abrir e aplicar."
-                  },
-                  {
-                    img: "/produto-4.png",
-                    title: "Você sabe exatamente o que fazer",
-                    text: "Sem gritos, sem frustração. Só um passo a passo claro que qualquer mãe consegue aplicar."
-                  }
-                ].map((card, i) => (
-                  <CarouselItem key={i} className="pl-4 basis-[85%] sm:basis-[70%] md:basis-1/2 lg:basis-1/3">
-                    <motion.div
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full flex flex-col transition-shadow hover:shadow-md"
-                    >
-                      <div className="w-full aspect-[4/3] overflow-hidden">
-                        <img
-                          src={card.img}
-                          alt={card.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-5 flex flex-col gap-2 flex-1">
-                        <h3 className="font-bold text-slate-900 text-base leading-snug">{card.title}</h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">{card.text}</p>
-                      </div>
-                    </motion.div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="hidden md:flex justify-center mt-8 gap-4">
-                <CarouselPrevious className="static translate-y-0" />
-                <CarouselNext className="static translate-y-0" />
-              </div>
-            </Carousel>
+            <ProductCarousel />
           </div>
         </section>
 
