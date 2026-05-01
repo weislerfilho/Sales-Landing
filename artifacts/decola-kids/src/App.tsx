@@ -696,7 +696,7 @@ function Home() {
                 { q: "Preciso imprimir?", a: "Sim, o material é em PDF. Você pode imprimir aos poucos, conforme for utilizando." },
                 { q: "Funciona se meu filho não sabe nada?", a: "Sim, começa do básico. Desde as primeiras letras até a leitura fluente." },
                 { q: "Quanto tempo por dia?", a: "Apenas 15 minutos são suficientes para manter a criança focada e aprendendo." },
-                { q: "Como recebo o acesso?", a: "Por e-mail, imediatamente após a aprovação do pagamento." },
+                { q: "Como recebo o acesso?", a: "O material é enviado diretamente para o seu e-mail cadastrado e também pelo WhatsApp, facilitando o acesso no dia a dia." },
                 { q: "Preciso ter experiência como professora?", a: "Não, o método é feito especificamente para mães e pais, com passo a passo fácil de seguir." }
               ].map((faq, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-slate-200">
