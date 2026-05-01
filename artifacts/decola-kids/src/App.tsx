@@ -285,13 +285,13 @@ function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="relative z-10 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3"
+                  className="relative z-10 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3 items-center text-center"
                 >
                   <div className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl ${item.bg} ${item.color} ${item.border} border-2 shrink-0`}>
                     {item.step}
                   </div>
                   <h3 className="font-bold text-lg text-slate-900">{item.title}</h3>
-                  <p className={`text-sm font-bold ${item.color} ${item.quoteBg} rounded-lg px-3 py-2`}>"{item.quote}"</p>
+                  <p className={`text-sm font-bold ${item.color} ${item.quoteBg} rounded-lg px-3 py-2 w-full`}>"{item.quote}"</p>
                   <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
