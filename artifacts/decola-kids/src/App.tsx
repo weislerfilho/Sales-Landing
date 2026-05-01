@@ -125,7 +125,7 @@ function ProductCarousel() {
             aria-hidden={i >= PRODUCT_CARDS.length ? "true" : undefined}
           >
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-full">
-              <div className="w-full aspect-[4/3] bg-slate-50 flex items-center justify-center p-3">
+              <div className="w-full aspect-[4/3] bg-white flex items-center justify-center p-3">
                 <img
                   src={card.img}
                   alt={card.title}
