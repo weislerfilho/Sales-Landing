@@ -1,0 +1,139 @@
+CORREÇÃO DO FLICKERING NAS BORDAS DO CARROSSEL (MOBILE)
+
+---
+
+🚨 PROBLEMA
+
+No mobile, as bordas do carrossel ficam “piscando” (flickering) durante a animação contínua.
+
+Isso acontece por:
+
+* diferença de largura entre conteúdo e container
+* gaps visíveis no loop
+* arredondamento de pixels (subpixel rendering)
+* overflow não mascarado corretamente
+
+---
+
+✅ CORREÇÕES OBRIGATÓRIAS
+
+---
+
+1. ESCONDER QUALQUER VAZAMENTO
+
+No container principal do carrossel:
+
+overflow: hidden;
+
+E garantir também:
+
+position: relative;
+
+---
+
+2. REMOVER GAPS VISUAIS
+
+* Remover qualquer:
+  gap
+  margin-right
+  space-between
+
+* Substituir por padding interno no card
+
+---
+
+3. GARANTIR LOOP PERFEITO
+
+* Duplicar os itens (lista 2x)
+* Garantir que o width total seja EXATO (sem quebra)
+
+Exemplo:
+
+width: max-content;
+
+---
+
+4. EVITAR SUBPIXEL BUG (ESSENCIAL)
+
+Adicionar:
+
+transform: translate3d(0, 0, 0);
+will-change: transform;
+backface-visibility: hidden;
+
+Isso força renderização via GPU e elimina flickering
+
+---
+
+5. AJUSTAR ANIMAÇÃO
+
+Trocar qualquer easing por:
+
+animation-timing-function: linear;
+
+E usar:
+
+transform: translateX(-50%);
+
+(se estiver duplicado corretamente)
+
+---
+
+6. PREVENIR “LINHA FANTASMA” NAS BORDAS
+
+Adicionar leve máscara:
+
+mask-image: linear-gradient(
+to right,
+transparent 0%,
+black 5%,
+black 95%,
+transparent 100%
+);
+
+(ou versão com -webkit-mask para mobile)
+
+---
+
+7. CORRIGIR TAMANHO DOS CARDS (MOBILE)
+
+* Garantir que cada card tenha largura fixa consistente:
+
+min-width: 85%;
+
+* NÃO usar width quebrado tipo 33.333% no mobile
+
+---
+
+8. OPCIONAL (MELHOR AINDA)
+
+Adicionar um pequeno padding lateral no container:
+
+padding-left: 10px;
+padding-right: 10px;
+
+Isso ajuda a esconder qualquer micro erro visual
+
+---
+
+🎯 RESULTADO ESPERADO
+
+* Carrossel rodando suave
+* Sem flickering
+* Sem borda piscando
+* Loop 100% contínuo
+* Aparência premium no mobile
+
+---
+
+⚠️ IMPORTANTE
+
+Esse tipo de bug NÃO se resolve só com velocidade —
+é problema estrutural de renderização + layout.
+
+---
+
+🚀 OBJETIVO
+
+Deixar o carrossel com qualidade de produto grande (nível Netflix / Apple):
+fluido, limpo e sem qualquer glitch visual.

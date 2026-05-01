@@ -110,34 +110,33 @@ function ProductCarousel() {
 
   return (
     <div
-      className="overflow-hidden w-full"
+      className="marquee-wrapper"
       onMouseEnter={pause}
       onMouseLeave={resume}
       onTouchStart={pause}
       onTouchEnd={resume}
     >
-      <div
-        ref={trackRef}
-        className="marquee-track flex gap-5"
-        style={{ width: `max-content` }}
-      >
+      <div ref={trackRef} className="marquee-track">
         {doubled.map((card, i) => (
           <div
             key={i}
-            className="w-[280px] sm:w-[320px] flex-shrink-0 bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
-            aria-hidden={i >= PRODUCT_CARDS.length}
+            className="flex-shrink-0"
+            style={{ width: 300, paddingRight: 16 }}
+            aria-hidden={i >= PRODUCT_CARDS.length ? "true" : undefined}
           >
-            <div className="w-full aspect-[4/3] bg-slate-50 flex items-center justify-center p-3">
-              <img
-                src={card.img}
-                alt={card.title}
-                className="w-full h-full object-contain rounded-lg"
-                draggable={false}
-              />
-            </div>
-            <div className="p-5 flex flex-col gap-2 flex-1">
-              <h3 className="font-bold text-slate-900 text-base leading-snug">{card.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed font-normal">{card.text}</p>
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-full">
+              <div className="w-full aspect-[4/3] bg-slate-50 flex items-center justify-center p-3">
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="w-full h-full object-contain rounded-lg"
+                  draggable={false}
+                />
+              </div>
+              <div className="p-5 flex flex-col gap-2 flex-1">
+                <h3 className="font-bold text-slate-900 text-base leading-snug">{card.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed font-normal">{card.text}</p>
+              </div>
             </div>
           </div>
         ))}
