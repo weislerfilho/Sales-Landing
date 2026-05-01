@@ -539,7 +539,6 @@ function Home() {
           <div className="max-w-5xl mx-auto">
             <div className="bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden text-white relative">
               {/* Background accents */}
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-decola-blue via-decola-yellow to-decola-green"></div>
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-decola-blue rounded-full blur-3xl opacity-20 pointer-events-none"></div>
               <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-decola-green rounded-full blur-3xl opacity-20 pointer-events-none"></div>
               
