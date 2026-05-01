@@ -236,46 +236,71 @@ function Home() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <Badge variant="outline" className="mb-4 bg-orange-50 text-orange-700 border-orange-200">Como funciona</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">O Método Decola Kids™</h2>
-              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                Um método simples e guiado em <span className="font-bold text-decola-blue">4 etapas</span>, com acesso a uma biblioteca completa com <span className="font-bold text-decola-blue">mais de 2.000 atividades</span> organizadas para cada fase.
-              </p>
-              <p className="text-base md:text-lg text-slate-700 max-w-3xl mx-auto mt-6 font-medium">
-                Você não recebe apenas atividades soltas…<br className="hidden sm:block" />
-                Você recebe um <span className="font-bold">caminho claro</span> + tudo o que precisa para aplicar na prática.
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                O Método Decola Kids™<br />
+                <span className="text-xl md:text-2xl font-semibold text-slate-600 leading-snug">Por que <span className="text-decola-blue font-bold">15 minutos por dia</span> funcionam quando horas de reforço escolar não funcionaram?</span>
+              </h2>
+              <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto mt-4 leading-relaxed">
+                A maioria das crianças não aprende a ler porque o cérebro delas ainda não foi preparado para decodificar sons e letras ao mesmo tempo.<br className="hidden sm:block" />
+                O Decola Kids resolve isso em <span className="font-bold text-decola-blue">4 etapas</span> que seguem exatamente a ordem que o cérebro infantil precisa — não a ordem que a escola prefere por conveniência.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-              {/* Connecting Line (Desktop) */}
-              <div className="hidden md:block absolute top-1/2 left-10 right-10 h-1 bg-slate-100 -translate-y-1/2 z-0"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+              <div className="hidden lg:block absolute top-8 left-10 right-10 h-0.5 bg-slate-100 z-0"></div>
 
               {[
-                { step: 1, title: "Sons e letras", desc: "A base firme: conectando o desenho da letra ao som que ela faz de forma lúdica.", color: "text-blue-500", bg: "bg-blue-50", border: "border-blue-200" },
-                { step: 2, title: "Sílabas", desc: "Os primeiros blocos: juntando sons sem decorar, mas entendendo a lógica.", color: "text-orange-500", bg: "bg-orange-50", border: "border-orange-200" },
-                { step: 3, title: "Leitura guiada", desc: "As primeiras palavras reais: lendo junto com você e sentindo o gosto da vitória.", color: "text-yellow-500", bg: "bg-yellow-50", border: "border-yellow-200" },
-                { step: 4, title: "Autonomia", desc: "O grande salto: confiança para ler sozinho e pedir novos livros.", color: "text-green-500", bg: "bg-green-50", border: "border-green-200" }
+                {
+                  step: 1,
+                  title: "Sons e letras",
+                  quote: "Ela sabe o nome da letra, mas não sabe o som.",
+                  desc: "Esse é o erro que trava 90% das crianças. Aqui seu filho aprende o som antes do nome — exatamente como o cérebro processa a leitura de verdade.",
+                  color: "text-blue-500", bg: "bg-blue-50", border: "border-blue-200", quoteBg: "bg-blue-50"
+                },
+                {
+                  step: 2,
+                  title: "Sílabas",
+                  quote: "Juntando peças, não decorando.",
+                  desc: "Em vez de repetir sílabas até memorizar, seu filho entende a lógica por trás delas. Quando ele entende, ele generaliza — e começa a ler palavras que nunca viu antes.",
+                  color: "text-orange-500", bg: "bg-orange-50", border: "border-orange-200", quoteBg: "bg-orange-50"
+                },
+                {
+                  step: 3,
+                  title: "Leitura guiada",
+                  quote: "A primeira vez que ele lê uma frase de verdade.",
+                  desc: "Você lê junto, ele repete, ele arrisca. A confiança vem aqui — antes de ler sozinho, ele precisa sentir que consegue. Esse momento muda tudo.",
+                  color: "text-yellow-500", bg: "bg-yellow-50", border: "border-yellow-200", quoteBg: "bg-yellow-50"
+                },
+                {
+                  step: 4,
+                  title: "Autonomia",
+                  quote: "Ele pede para ler. Você só observa.",
+                  desc: "Quando o método é seguido na ordem certa, a autonomia não é forçada — ela aparece naturalmente. Seu filho vai querer ler placas, embalagens, legendas. Você vai se surpreender.",
+                  color: "text-green-500", bg: "bg-green-50", border: "border-green-200", quoteBg: "bg-green-50"
+                }
               ].map((item, i) => (
-                <motion.div 
+                <motion.div
                   key={item.step}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="relative z-10 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow text-center"
+                  className="relative z-10 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3"
                 >
-                  <div className={`w-14 h-14 mx-auto rounded-full flex items-center justify-center font-bold text-xl mb-4 ${item.bg} ${item.color} ${item.border} border-2`}>
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl ${item.bg} ${item.color} ${item.border} border-2 shrink-0`}>
                     {item.step}
                   </div>
-                  <h3 className="font-bold text-lg mb-2 text-slate-900">{item.title}</h3>
-                  <p className="text-sm text-slate-600">{item.desc}</p>
+                  <h3 className="font-bold text-lg text-slate-900">{item.title}</h3>
+                  <p className={`text-sm font-bold ${item.color} ${item.quoteBg} rounded-lg px-3 py-2`}>"{item.quote}"</p>
+                  <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
 
             <div className="mt-12 max-w-3xl mx-auto bg-blue-50 border border-blue-100 rounded-2xl p-6 md:p-8 text-center">
               <p className="text-base md:text-lg text-decola-blue font-semibold leading-relaxed">
-                Cada etapa já vem com atividades específicas, prontas para aplicar, sem você precisar pensar no que fazer.
+                Cada etapa vem com atividades específicas, prontas para aplicar em <span className="font-bold">15 minutos</span>.<br className="hidden sm:block" />
+                Você não precisa improvisar. Nunca.
               </p>
             </div>
           </div>
@@ -345,23 +370,70 @@ function Home() {
         <section className="py-20 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">O que você vai receber</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                Tudo que você precisa para seu filho começar a ler <span className="text-decola-blue">esta semana</span>
+              </h2>
+              <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Não é uma pasta de PDFs.<br />
+                É um sistema completo para você aplicar hoje, sem precisar pesquisar, organizar ou adivinhar o próximo passo.
+              </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-12">
+            <div className="grid sm:grid-cols-2 gap-5 mb-12">
               {[
-                { title: "Plano de 4 semanas", icon: <BookOpen className="w-6 h-6 text-decola-blue" /> },
-                { title: "Rotina diária", icon: <CheckCircle2 className="w-6 h-6 text-decola-green" /> },
-                { title: "Atividades organizadas", icon: <Lock className="w-6 h-6 text-decola-yellow" /> },
-                { title: "+2.000 atividades", icon: <Book className="w-6 h-6 text-decola-orange" /> }
+                {
+                  title: "Plano de 4 semanas",
+                  icon: <BookOpen className="w-6 h-6 text-decola-blue" />,
+                  bg: "bg-blue-50", border: "border-blue-100",
+                  desc: "Você sabe exatamente o que fazer hoje, amanhã e em cada dia das próximas 4 semanas. Sem improvisar. Sem culpa de estar fazendo errado.",
+                  highlight: "4 semanas"
+                },
+                {
+                  title: "Rotina diária de 15 minutos",
+                  icon: <CheckCircle2 className="w-6 h-6 text-decola-green" />,
+                  bg: "bg-green-50", border: "border-green-100",
+                  desc: "Encaixe no fim do dia, antes do banho, onde couber. São 15 minutos estruturados que valem mais do que 1 hora de reforço sem direção.",
+                  highlight: "15 minutos"
+                },
+                {
+                  title: "Atividades organizadas por fase",
+                  icon: <Lock className="w-6 h-6 text-decola-yellow" />,
+                  bg: "bg-yellow-50", border: "border-yellow-100",
+                  desc: "Cada atividade já está no lugar certo, na hora certa. Você abre, imprime ou mostra na tela — e começa. Sem dúvida sobre o que é adequado para a fase do seu filho.",
+                  highlight: null
+                },
+                {
+                  title: "Biblioteca com +2.000 atividades",
+                  icon: <Book className="w-6 h-6 text-decola-orange" />,
+                  bg: "bg-orange-50", border: "border-orange-100",
+                  desc: "Se seu filho travar em algum ponto, você não fica sem saída. Tem atividade para reforçar, alternativa mais fácil e desafio para quando ele avançar rápido. Para cada criança, no ritmo dela.",
+                  highlight: "+2.000 atividades"
+                }
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
-                  <div className="bg-white p-3 rounded-xl shadow-sm">
-                    {item.icon}
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className={`flex flex-col gap-4 p-6 rounded-2xl border ${item.bg} ${item.border} hover:shadow-md transition-shadow`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="bg-white p-3 rounded-xl shadow-sm shrink-0">
+                      {item.icon}
+                    </div>
+                    <span className="font-bold text-lg text-slate-800">{item.title}</span>
                   </div>
-                  <span className="font-bold text-lg text-slate-800">{item.title}</span>
-                </div>
+                  <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                </motion.div>
               ))}
+            </div>
+
+            <div className="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8 text-center">
+              <p className="text-base md:text-lg text-slate-700 leading-relaxed">
+                Tudo isso foi pensado para mães que não têm tempo sobrando, não têm formação em pedagogia e não querem mais transformar a lição de casa em conflito.<br className="hidden sm:block" />
+                <span className="font-bold text-decola-blue mt-2 block">Se esse é o seu caso, o Decola Kids foi feito para você.</span>
+              </p>
             </div>
 
           </div>

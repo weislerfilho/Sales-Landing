@@ -1,0 +1,104 @@
+ATUALIZAÇÃO DE COPY E ESTRUTURA — SEÇÃO DO MÉTODO E ENTREGA (DECOLA KIDS)
+
+Faça as seguintes alterações nas duas seções da landing page:
+
+🔁 SEÇÃO 1 — MÉTODO EM 4 ETAPAS
+
+TÍTULO
+
+Substituir o título atual por:
+
+"O Método Decola Kids™
+Por que 15 minutos por dia funcionam quando horas de reforço escolar não funcionaram?"
+
+SUBTÍTULO
+
+Substituir o texto atual por:
+
+"A maioria das crianças não aprende a ler porque o cérebro delas ainda não foi preparado para decodificar sons e letras ao mesmo tempo.
+O Decola Kids resolve isso em 4 etapas que seguem exatamente a ordem que o cérebro infantil precisa — não a ordem que a escola prefere por conveniência."
+
+CARDS DAS ETAPAS (reescrever completamente)
+
+Manter estrutura visual (4 cards), mas substituir o conteúdo por:
+
+🔵 Etapa 1: Sons e letras
+"Ela sabe o nome da letra, mas não sabe o som."
+Esse é o erro que trava 90% das crianças. Aqui seu filho aprende o som antes do nome — exatamente como o cérebro processa a leitura de verdade.
+
+🟠 Etapa 2: Sílabas
+"Juntando peças, não decorando."
+Em vez de repetir sílabas até memorizar, seu filho entende a lógica por trás delas. Quando ele entende, ele generaliza — e começa a ler palavras que nunca viu antes.
+
+🟡 Etapa 3: Leitura guiada
+"A primeira vez que ele lê uma frase de verdade."
+Você lê junto, ele repete, ele arrisca. A confiança vem aqui — antes de ler sozinho, ele precisa sentir que consegue. Esse momento muda tudo.
+
+🟢 Etapa 4: Autonomia
+"Ele pede para ler. Você só observa."
+Quando o método é seguido na ordem certa, a autonomia não é forçada — ela aparece naturalmente. Seu filho vai querer ler placas, embalagens, legendas. Você vai se surpreender.
+
+TEXTO DE REFORÇO (abaixo dos cards)
+
+Adicionar:
+
+"Cada etapa vem com atividades específicas, prontas para aplicar em 15 minutos.
+Você não precisa improvisar. Nunca."
+
+AJUSTES VISUAIS
+Destacar frases entre aspas (usar negrito ou cor da marca)
+Manter cores dos círculos (azul, laranja, amarelo, verde)
+Aumentar levemente o espaçamento entre os cards
+Melhorar legibilidade mobile (linhas mais curtas)
+
+🔁 SEÇÃO 2 — O QUE VOCÊ VAI RECEBER
+
+TÍTULO
+
+Substituir por:
+
+"Tudo que você precisa para seu filho começar a ler esta semana"
+
+SUBTÍTULO
+
+Substituir por:
+
+"Não é uma pasta de PDFs.
+É um sistema completo para você aplicar hoje, sem precisar pesquisar, organizar ou adivinhar o próximo passo."
+
+CARDS (reescrever completamente)
+
+📅 Plano de 4 semanas
+"Você sabe exatamente o que fazer hoje, amanhã e em cada dia das próximas 4 semanas.
+Sem improvisar. Sem culpa de estar fazendo errado."
+
+⏱️ Rotina diária de 15 minutos
+"Encaixe no fim do dia, antes do banho, onde couber.
+São 15 minutos estruturados que valem mais do que 1 hora de reforço sem direção."
+
+🗂️ Atividades organizadas por fase
+"Cada atividade já está no lugar certo, na hora certa.
+Você abre, imprime ou mostra na tela — e começa.
+Sem dúvida sobre o que é adequado para a fase do seu filho."
+
+📚 Biblioteca com +2.000 atividades
+"Se seu filho travar em algum ponto, você não fica sem saída.
+Tem atividade para reforçar, alternativa mais fácil e desafio para quando ele avançar rápido.
+Para cada criança, no ritmo dela."
+
+TEXTO DE FECHAMENTO
+
+Adicionar abaixo dos cards:
+
+"Tudo isso foi pensado para mães que não têm tempo sobrando, não têm formação em pedagogia e não querem mais transformar a lição de casa em conflito.
+Se esse é o seu caso, o Decola Kids foi feito para você."
+
+AJUSTES VISUAIS
+Manter layout clean
+Aumentar espaçamento interno dos cards
+Destacar palavras-chave (15 minutos, 4 semanas, +2.000 atividades)
+Garantir leitura fácil no mobile
+
+OBJETIVO
+
+Aumentar percepção de valor, quebrar objeções, gerar identificação emocional e preparar o lead para o CTA com mais convicção.
