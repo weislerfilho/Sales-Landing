@@ -534,59 +534,6 @@ function Home() {
           </div>
         </section>
 
-        {/* 10. DEPOIMENTOS */}
-        <section className="py-20 px-6 bg-slate-50 overflow-hidden">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Mães como você que já viram o resultado</h2>
-            </div>
-
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                {[
-                  { name: "Carla Mendes", avatar: "/avatar-1.png", text: "Eu tava ficando desesperada já… meu filho não conseguia juntar as letras 😔 comecei fazendo 15 min por dia e em menos de 2 semanas ele já tava lendo 😳" },
-                  { name: "Juliana Rocha", avatar: "/avatar-2.png", text: "Eu não sou professora… mas esse passo a passo ajuda demais! minha filha pede pra estudar kkk ❤️" },
-                  { name: "Patrícia Alves", avatar: "/avatar-3.png", text: "Meu filho tava atrasado e eu me sentia péssima 😞 agora ele tá muito mais confiante" },
-                  { name: "Fernanda Souza", avatar: "/avatar-4.png", text: "Comprei sem expectativa… mas me surpreendi! muito organizado" },
-                  { name: "Renata Oliveira", avatar: "/avatar-5.png", text: "Antes era briga todo dia 😩 agora virou rotina tranquila" },
-                  { name: "Aline Costa", avatar: "/avatar-6.png", text: "Agora sei exatamente o que fazer, não fico mais perdida" }
-                ].map((depoimento, index) => (
-                  <CarouselItem key={index} className="pl-4 basis-[82%] sm:basis-[75%] md:basis-1/2 lg:basis-1/3">
-                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-full flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100">
-                          <img src={depoimento.avatar} alt={depoimento.name} className="w-full h-full object-cover" />
-                        </div>
-                        <div>
-                          <p className="font-bold text-slate-900">{depoimento.name}</p>
-                          <div className="flex text-yellow-400">
-                            {[1,2,3,4,5].map(star => <Star key={star} className="w-3 h-3 fill-current" />)}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-[#E1F5FE] p-4 rounded-xl rounded-tl-sm relative flex-1">
-                        <p className="text-slate-800 text-sm leading-relaxed font-medium">
-                          {depoimento.text}
-                        </p>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center mt-8 gap-4 hidden md:flex">
-                <CarouselPrevious className="static translate-y-0" />
-                <CarouselNext className="static translate-y-0" />
-              </div>
-            </Carousel>
-          </div>
-        </section>
-
         {/* 9. BÔNUS + 12. OFERTA */}
         <section id="oferta" className="py-20 px-6 bg-white relative">
           <div className="max-w-5xl mx-auto">
@@ -697,6 +644,59 @@ function Home() {
                 Se você acessar o material e achar que não é para o seu filho, basta nos enviar um único e-mail e devolveremos 100% do seu dinheiro. Sem perguntas. O risco é todo nosso.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* 10. DEPOIMENTOS */}
+        <section className="py-20 px-6 bg-slate-50 overflow-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Mães como você que já viram o resultado</h2>
+            </div>
+
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {[
+                  { name: "Carla Mendes", avatar: "/avatar-1.png", text: "Eu tava ficando desesperada já… meu filho não conseguia juntar as letras 😔 comecei fazendo 15 min por dia e em menos de 2 semanas ele já tava lendo 😳" },
+                  { name: "Juliana Rocha", avatar: "/avatar-2.png", text: "Eu não sou professora… mas esse passo a passo ajuda demais! minha filha pede pra estudar kkk ❤️" },
+                  { name: "Patrícia Alves", avatar: "/avatar-3.png", text: "Meu filho tava atrasado e eu me sentia péssima 😞 agora ele tá muito mais confiante" },
+                  { name: "Fernanda Souza", avatar: "/avatar-4.png", text: "Comprei sem expectativa… mas me surpreendi! muito organizado" },
+                  { name: "Renata Oliveira", avatar: "/avatar-5.png", text: "Antes era briga todo dia 😩 agora virou rotina tranquila" },
+                  { name: "Aline Costa", avatar: "/avatar-6.png", text: "Agora sei exatamente o que fazer, não fico mais perdida" }
+                ].map((depoimento, index) => (
+                  <CarouselItem key={index} className="pl-4 basis-[82%] sm:basis-[75%] md:basis-1/2 lg:basis-1/3">
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-full flex flex-col">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-100">
+                          <img src={depoimento.avatar} alt={depoimento.name} className="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-slate-900">{depoimento.name}</p>
+                          <div className="flex text-yellow-400">
+                            {[1,2,3,4,5].map(star => <Star key={star} className="w-3 h-3 fill-current" />)}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-[#E1F5FE] p-4 rounded-xl rounded-tl-sm relative flex-1">
+                        <p className="text-slate-800 text-sm leading-relaxed font-medium">
+                          {depoimento.text}
+                        </p>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center mt-8 gap-4 hidden md:flex">
+                <CarouselPrevious className="static translate-y-0" />
+                <CarouselNext className="static translate-y-0" />
+              </div>
+            </Carousel>
           </div>
         </section>
 
