@@ -162,7 +162,7 @@ function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={scrollToOffer}
-                className="bg-decola-green hover:bg-green-600 text-white border-green-700 text-lg py-7 px-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+                className="btn-cta-pulse bg-decola-green hover:bg-green-600 text-white border-green-700 text-lg py-7 px-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
               >
                 Quero ajudar meu filho agora
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -498,7 +498,7 @@ function Home() {
                     Você está recebendo tudo isso com mais de <span className="font-extrabold">94% de desconto</span>.
                   </p>
 
-                  <Button className="w-full bg-decola-green hover:bg-green-600 text-white border-green-700 h-20 rounded-2xl text-xl font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col items-center justify-center gap-0">
+                  <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 h-20 rounded-2xl text-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col items-center justify-center gap-0">
                     <span>QUERO COMEÇAR AGORA</span>
                     <span className="text-xs font-normal opacity-90">Acesso imediato • Pagamento seguro</span>
                   </Button>
