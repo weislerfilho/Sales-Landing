@@ -629,7 +629,7 @@ function Home() {
               </svg>
             </div>
             <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">7 dias de garantia incondicional</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">30 dias de garantia incondicional</h3>
               <p className="text-slate-600">
                 Se você acessar o material e achar que não é para o seu filho, basta nos enviar um único e-mail e devolveremos 100% do seu dinheiro. Sem perguntas. O risco é todo nosso.
               </p>
