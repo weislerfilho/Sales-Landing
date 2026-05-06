@@ -391,7 +391,7 @@ function Home() {
                     { icon: <CheckCircle2 className="w-5 h-5 text-yellow-500" />, title: "Atividades prontas", desc: "É só abrir, olhar e aplicar com a criança." }
                   ].map((item, i) => (
                     <motion.div key={i} variants={fadeIn} className="flex gap-4">
-                      <div className="mt-1 shrink-0 p-2 bg-white rounded-lg shadow-sm border border-slate-100">
+                      <div className="shrink-0 w-10 h-10 flex items-center justify-center bg-white rounded-lg shadow-sm border border-slate-100">
                         {item.icon}
                       </div>
                       <div>
