@@ -603,9 +603,8 @@ function Home() {
                     Você está recebendo tudo isso com mais de <span className="font-extrabold">94% de desconto</span>.
                   </p>
 
-                  <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 h-20 rounded-2xl text-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col items-center justify-center gap-0">
-                    <span>QUERO COMEÇAR AGORA</span>
-                    <span className="text-xs font-normal opacity-90">Acesso imediato • Pagamento seguro</span>
+                  <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 h-16 rounded-2xl text-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all">
+                    QUERO COMEÇAR AGORA
                   </Button>
 
                   <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400 font-medium">
