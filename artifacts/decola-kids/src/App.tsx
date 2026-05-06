@@ -603,7 +603,7 @@ function Home() {
                     Você está recebendo tudo isso com mais de <span className="font-extrabold">94% de desconto</span>.
                   </p>
 
-                  <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 py-6 px-12 rounded-2xl text-xl font-bold tracking-wide hover:shadow-2xl hover:-translate-y-1 transition-all">
+                  <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 py-6 px-8 rounded-2xl text-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all">
                     QUERO COMEÇAR AGORA
                   </Button>
 
