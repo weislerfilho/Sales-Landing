@@ -720,7 +720,7 @@ function Home() {
                 draggable={false}
               />
             </div>
-            <p className="mb-4">contato@decolakids.com.br</p>
+            <p className="mb-4">decolakids@hotmail.com</p>
             <div className="flex justify-center gap-6 mb-8">
               <a href="#" className="hover:text-white transition-colors">Termos de uso</a>
               <a href="#" className="hover:text-white transition-colors">Política de privacidade</a>
