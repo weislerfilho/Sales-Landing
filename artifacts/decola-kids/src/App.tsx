@@ -603,9 +603,11 @@ function Home() {
                     Você está recebendo tudo isso com mais de <span className="font-extrabold">94% de desconto</span>.
                   </p>
 
-                  <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 py-6 px-8 rounded-2xl text-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all">
-                    QUERO COMEÇAR AGORA
-                  </Button>
+                  <a href="https://decola-kids.pay.yampi.com.br/r/R2J8BILZT0" target="_blank" rel="noopener noreferrer" className="w-full block">
+                    <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 py-6 px-8 rounded-2xl text-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all">
+                      QUERO COMEÇAR AGORA
+                    </Button>
+                  </a>
 
                   <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400 font-medium">
                     <ShieldCheck className="w-4 h-4 text-green-500" />
