@@ -113,8 +113,6 @@ function ProductCarousel() {
       className="marquee-wrapper"
       onMouseEnter={pause}
       onMouseLeave={resume}
-      onTouchStart={pause}
-      onTouchEnd={resume}
     >
       <div ref={trackRef} className="marquee-track">
         {doubled.map((card, i) => (
