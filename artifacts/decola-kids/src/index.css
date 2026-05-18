@@ -187,9 +187,11 @@
   -webkit-backface-visibility: hidden;
 }
 
-.marquee-track:hover,
-.marquee-track.paused {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .marquee-track:hover,
+  .marquee-track.paused {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes cta-pulse {
