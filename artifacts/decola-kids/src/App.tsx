@@ -71,7 +71,8 @@ const VTurbPlayer = React.memo(function VTurbPlayer() {
       iframe.src =
         "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html" +
         (location.search || "?") +
-        "&vl=" + encodeURIComponent(location.href);
+        "&vl=" + encodeURIComponent(location.href) +
+        "&t=0";
     };
 
     aspect.appendChild(iframe);
