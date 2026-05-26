@@ -17,27 +17,23 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VSL Section — VTurb runs in an isolated /vsl.html page.
-   React only renders a plain <iframe src="/vsl.html">.
-   No sdk.js, no scripts, no hooks, no refs in this component.
-   React.memo: never re-renders after mount.
-   Debug logs confirm: 1 mount / 0 unmounts / 0 rerenders.
+   Custom element type declaration for VTurb smartplayer
+   ============================================================ */
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "vturb-smartplayer": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { id?: string };
+    }
+  }
+}
+
+/* ============================================================
+   VSL Section — VTurb <vturb-smartplayer> web component.
+   Script is loaded once via index.html <head>.
+   No iframe, no sdk.js, no dynamic script injection here.
+   Static render only — never unmounts, never rerenders.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
-  const renderCount = useRef(0);
-  renderCount.current += 1;
-
-  useEffect(() => {
-    console.log("[VSL] mount — render count:", renderCount.current);
-    return () => {
-      console.log("[VSL] UNMOUNT — this should never appear");
-    };
-  }, []);
-
-  if (renderCount.current > 1) {
-    console.warn("[VSL] RE-RENDER detected — count:", renderCount.current);
-  }
-
   return (
     <section
       id="vsl"
@@ -54,23 +50,14 @@ const VSLSection = React.memo(function VSLSection() {
           </p>
         </div>
 
-        {/* Video card — VTurb runs isolated inside /vsl.html */}
+        {/* Video card — VTurb smartplayer web component */}
         <div
           className="mx-auto rounded-3xl border border-slate-100 shadow-xl overflow-hidden"
           style={{ background: "#ffffff", maxWidth: 432, padding: "16px 16px 20px" }}
         >
-          <iframe
-            src="/vsl.html"
-            frameBorder="0"
-            allowFullScreen
-            allow="autoplay; fullscreen"
-            style={{
-              border: "none",
-              width: "100%",
-              aspectRatio: "9/16",
-              display: "block",
-              borderRadius: "12px",
-            }}
+          <vturb-smartplayer
+            id="vid-6a1540ee32c028fa1395779e"
+            style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: "400px" }}
           />
         </div>
 
