@@ -257,7 +257,7 @@ function Home() {
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">A hora da lição de casa virou um pesadelo?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">A hora da lição de casa virou um momento difícil aí na sua casa?</h2>
             </motion.div>
 
             <motion.div 
@@ -265,10 +265,10 @@ function Home() {
               className="space-y-4"
             >
               {[
-                "Seu filho chora, se frustra e diz que não consegue.",
-                "Você perde a paciência (e depois se sente a pior mãe do mundo por ter gritado).",
-                "O medo do atraso escolar tira o seu sono à noite.",
-                "Você sente que, não importa o quanto tente ajudar, ele não evolui."
+                "Seu filho se distrai rápido e perde o interesse nas atividades.",
+                "As tarefas simples acabam virando estresse e frustração.",
+                "Você tenta ajudar… mas sente que nada funciona de verdade.",
+                "E o medo dele ficar para trás começa a preocupar você."
               ].map((text, i) => (
                 <motion.div key={i} variants={fadeIn} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4">
                   <div className="bg-red-50 p-1.5 rounded-full mt-1 shrink-0">
