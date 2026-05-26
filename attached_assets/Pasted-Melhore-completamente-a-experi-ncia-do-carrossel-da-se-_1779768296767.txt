@@ -1,0 +1,124 @@
+Melhore completamente a experiência do carrossel da seção “Veja por dentro do Decola Kids” no mobile.
+
+━━━━━━━━━━━
+OBJETIVO
+━━━━━━━━━━━
+
+O carrossel atualmente:
+
+* passa automaticamente sem controle confortável
+* não permite interação natural no celular
+* ao segurar na imagem, o navegador amplia/salva a imagem
+* isso quebra a experiência premium da landing
+
+Transformar o carrossel em uma experiência fluida, moderna e natural para mobile.
+
+━━━━━━━━━━━
+COMPORTAMENTO MOBILE
+━━━━━━━━━━━
+
+Adicionar suporte completo para:
+
+* arrastar com o dedo (swipe horizontal)
+* mover manualmente para frente e para trás
+* interação suave estilo app moderno
+
+Quando o usuário:
+
+* tocar e arrastar → o carrossel deve acompanhar o dedo suavemente
+* soltar → continuar autoplay automaticamente
+
+━━━━━━━━━━━
+PAUSA AO SEGURAR
+━━━━━━━━━━━
+
+No mobile:
+
+* ao segurar o dedo sobre o carrossel → autoplay pausa
+* ao soltar → autoplay continua
+
+No desktop:
+
+* hover pausa
+* mouse sai → autoplay retorna
+
+━━━━━━━━━━━
+IMPEDIR AMPLIAÇÃO/SALVAMENTO DAS IMAGENS
+━━━━━━━━━━━
+
+Atualmente ao segurar a imagem:
+
+* aparece preview ampliado
+* menu de salvar/download
+* comportamento padrão do navegador
+
+Remover completamente isso.
+
+Aplicar:
+
+* user-select: none
+* -webkit-user-drag: none
+* -webkit-touch-callout: none
+* pointer optimizations
+* impedir context menu
+* impedir drag padrão de imagem
+
+As imagens devem:
+
+* parecer parte de um app premium
+* não poder ser arrastadas/salvas facilmente
+* não abrir preview ao toque prolongado
+
+━━━━━━━━━━━
+AUTOPLAY
+━━━━━━━━━━━
+
+O autoplay deve:
+
+* continuar existindo
+* ficar mais suave
+* velocidade um pouco menor
+* não parecer acelerado
+* não “lutar” contra o usuário ao arrastar
+
+Quando o usuário interagir:
+
+* autoplay pausa temporariamente
+* retoma automaticamente alguns segundos depois
+
+━━━━━━━━━━━
+VISUAL / UX
+━━━━━━━━━━━
+
+Manter:
+
+* design atual
+* estilo premium
+* bordas arredondadas
+* cards atuais
+
+Melhorar:
+
+* suavidade do movimento
+* sensação premium
+* responsividade mobile
+* fluidez geral
+
+━━━━━━━━━━━
+IMPORTANTE
+━━━━━━━━━━━
+
+Garantir:
+
+* scroll vertical da página continue funcionando normalmente
+* swipe horizontal do carrossel não trave a página
+* sem bugs de toque no mobile
+* sem seleção de imagem/texto
+* sem zoom estranho
+* sem abrir menu de imagem
+
+O comportamento deve ficar parecido com:
+
+* carrosséis modernos de apps
+* experiência iPhone/Instagram/Netflix
+* extremamente fluido no mobile

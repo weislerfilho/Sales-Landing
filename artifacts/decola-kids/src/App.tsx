@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -213,50 +215,54 @@ const PRODUCT_CARDS = [
 ];
 
 function ProductCarousel() {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const autoplay = useRef(
+    Autoplay({ delay: 3200, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
 
-  const pause = () => {
-    if (trackRef.current) trackRef.current.classList.add("paused");
-  };
-  const resume = () => {
-    if (trackRef.current) trackRef.current.classList.remove("paused");
-  };
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: "start", dragFree: true, watchDrag: true },
+    [autoplay.current]
+  );
 
-  const doubled = [...PRODUCT_CARDS, ...PRODUCT_CARDS];
+  const stopAutoplay = useCallback(() => autoplay.current.stop(), []);
+  const startAutoplay = useCallback(() => autoplay.current.play(), []);
 
   return (
     <div
-      className="marquee-wrapper"
-      onMouseEnter={pause}
-      onMouseLeave={resume}
-      onTouchStart={pause}
-      onTouchEnd={resume}
-      onTouchCancel={resume}
+      className="overflow-hidden select-none"
+      style={{ WebkitUserSelect: "none", WebkitTouchCallout: "none" } as React.CSSProperties}
+      onMouseEnter={stopAutoplay}
+      onMouseLeave={startAutoplay}
+      onTouchStart={stopAutoplay}
+      onTouchEnd={startAutoplay}
+      onTouchCancel={startAutoplay}
     >
-      <div ref={trackRef} className="marquee-track">
-        {doubled.map((card, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0"
-            style={{ width: 300, paddingRight: 16 }}
-            aria-hidden={i >= PRODUCT_CARDS.length ? "true" : undefined}
-          >
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-full">
-              <div className="w-full aspect-[4/3] bg-white flex items-center justify-center p-3">
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  className="w-full h-full object-contain rounded-lg"
-                  draggable={false}
-                />
-              </div>
-              <div className="p-5 flex flex-col gap-2 flex-1">
-                <h3 className="font-bold text-slate-900 text-base leading-snug">{card.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed font-normal">{card.text}</p>
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="flex">
+          {PRODUCT_CARDS.map((card, i) => (
+            <div
+              key={i}
+              className="min-w-0 shrink-0 grow-0 basis-[82%] sm:basis-[45%] lg:basis-[32%] pl-4"
+            >
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-full">
+                <div className="w-full aspect-[4/3] bg-white flex items-center justify-center p-3">
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="w-full h-full object-contain rounded-lg pointer-events-none"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
+                    onDragStart={(e) => e.preventDefault()}
+                  />
+                </div>
+                <div className="p-5 flex flex-col gap-2 flex-1">
+                  <h3 className="font-bold text-slate-900 text-base leading-snug">{card.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-normal">{card.text}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
