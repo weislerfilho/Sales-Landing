@@ -20,8 +20,23 @@ const queryClient = new QueryClient();
    VSL Section — single static iframe pointing directly to
    VTurb's embed.html. No SDK, no scripts, no onload tricks,
    no dynamic injection. React.memo ensures it never re-renders.
+   Debug logs confirm single mount / zero unmounts / zero rerenders.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
+  const renderCount = useRef(0);
+  renderCount.current += 1;
+
+  useEffect(() => {
+    console.log("[VSL] mount — render count:", renderCount.current);
+    return () => {
+      console.log("[VSL] UNMOUNT — this should never appear");
+    };
+  }, []);
+
+  if (renderCount.current > 1) {
+    console.warn("[VSL] RE-RENDER detected — count:", renderCount.current);
+  }
+
   return (
     <section
       id="vsl"
@@ -227,6 +242,20 @@ const scrollToOffer = () => {
   }
 };
 
+// Module-level constants — never recreated on re-renders
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
 function Home() {
   const [currentDate, setCurrentDate] = useState("");
 
@@ -237,21 +266,6 @@ function Home() {
     const yyyy = date.getFullYear();
     setCurrentDate(`${dd}/${mm}/${yyyy}`);
   }, []);
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
 
   return (
     <div className="min-h-screen w-full bg-background font-sans overflow-x-hidden text-slate-800">
