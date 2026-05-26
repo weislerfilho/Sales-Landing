@@ -66,13 +66,13 @@ const VTurbPlayer = React.memo(function VTurbPlayer() {
     iframe.referrerPolicy      = "origin";
     iframe.src                 = "about:blank";
     iframe.style.cssText       = "position:absolute;top:0;left:0;width:100%;height:100%;border:none;";
+    iframe.setAttribute("allow", "autoplay; fullscreen; encrypted-media");
     iframe.onload = function () {
       iframe.onload = null;
       iframe.src =
         "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html" +
         (location.search || "?") +
-        "&vl=" + encodeURIComponent(location.href) +
-        "&t=0";
+        "&vl=" + encodeURIComponent(location.href);
     };
 
     aspect.appendChild(iframe);
