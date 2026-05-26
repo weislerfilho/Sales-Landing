@@ -17,67 +17,78 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VSL Section — VTurb embed + CTA (on-brand, light design)
+   VSL Section — VTurb embed + CTA
+   IMPORTANT: This section uses a plain <section> (NOT motion.section)
+   to prevent framer-motion animations from causing iframe repaints/restarts.
+   The player is injected once via IntersectionObserver (lazy) and guarded
+   by a module-level flag so it NEVER reinjects on re-render or remount.
    ============================================================ */
+let _vslPlayerInjected = false;
+
 function VSLSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Clear VTurb resume/progress data so video always starts from beginning
-    try {
-      const vid = "6a150ff474d91fbf632df4c5";
-      Object.keys(localStorage).forEach((k) => {
-        if (k.includes(vid) || k.includes("smartplayer") || k.includes("converteai")) {
-          localStorage.removeItem(k);
-        }
-      });
-    } catch (_) {}
+    const container = containerRef.current;
+    const section = sectionRef.current;
+    if (!container || !section || _vslPlayerInjected) return;
 
-    // Inject VTurb SDK script once
-    if (!document.getElementById("vturb-sdk")) {
-      const s = document.createElement("script");
-      s.id = "vturb-sdk";
-      s.type = "text/javascript";
-      s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-      s.async = true;
-      document.head.appendChild(s);
-    }
+    const injectPlayer = () => {
+      if (_vslPlayerInjected) return;
+      _vslPlayerInjected = true;
 
-    // Unique session param so player never detects a returning viewer
-    const sid = Date.now();
+      // Inject VTurb SDK script — once per page load only
+      if (!document.getElementById("vturb-sdk")) {
+        const s = document.createElement("script");
+        s.id = "vturb-sdk";
+        s.type = "text/javascript";
+        s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+        s.async = true;
+        document.head.appendChild(s);
+      }
 
-    // Inject the iframe HTML exactly as provided, without React modifying it
-    if (containerRef.current) {
-      containerRef.current.innerHTML = `
+      // Inject iframe HTML directly — bypasses React reconciliation entirely
+      container.innerHTML = `
         <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin: 0 auto; width: 100%; max-width: 340px;">
           <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a150ff474d91fbf632df4c5_aspect">
-            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a150ff474d91fbf632df4c5"
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+            <iframe
+              id="ifr_6a150ff474d91fbf632df4c5"
+              frameborder="0"
+              allowfullscreen
+              allow="autoplay; fullscreen"
               referrerpolicy="origin"
-              onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href) +'&sid=${sid}&t=0'">
+              src="about:blank"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+              onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href) +'&t=0'">
             </iframe>
           </div>
         </div>
       `;
-    }
+    };
+
+    // Lazy-load: inject only when section enters viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          injectPlayer();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(section);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <motion.section
+    <section
       id="vsl"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      ref={sectionRef}
       className="relative py-16 md:py-24 px-4 md:px-6 bg-white overflow-visible"
     >
-      {/* Subtle decorative stars — matching site style */}
-      <FloatingStar className="top-6 left-[5%] text-decola-yellow" size={18} delay={0} />
-      <FloatingStar className="top-10 right-[6%] text-decola-purple" size={14} delay={1.2} />
-      <FloatingStar className="bottom-10 left-[8%] text-decola-blue/40" size={12} delay={0.6} />
-      <FloatingStar className="bottom-6 right-[10%] text-decola-orange" size={16} delay={2} />
-
-      {/* Soft background glow blobs */}
+      {/* Static background glow blobs — no animation, no repaint */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden -z-10"
@@ -99,12 +110,11 @@ function VSLSection() {
           </p>
         </div>
 
-        {/* Video card — glassmorphism light */}
+        {/* Video card — static wrapper, NO transforms/animations around the iframe */}
         <div
           className="mx-auto rounded-3xl border border-slate-100 shadow-xl overflow-visible"
           style={{
             background: "rgba(255,255,255,0.85)",
-            backdropFilter: "blur(12px)",
             maxWidth: 380,
             padding: "16px 16px 20px",
             boxShadow: "0 8px 40px rgba(29,78,216,0.10), 0 2px 12px rgba(0,0,0,0.06)"
@@ -128,7 +138,7 @@ function VSLSection() {
           </button>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
