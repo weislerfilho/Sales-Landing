@@ -1,0 +1,152 @@
+Atualize toda a seção de oferta/pricing da landing page Decola Kids para aumentar credibilidade, percepção premium e conversão.
+
+━━━━━━━━━━━
+OBJETIVO
+━━━━━━━━━━━
+
+A oferta atual está visualmente muito boa, porém:
+
+* o desconto de 94% parece exagerado
+* o valor total de R$188,40 reduz credibilidade
+* os bônus cortados não parecem naturais
+
+Ajustar tudo para parecer:
+
+* mais profissional
+* mais crível
+* mais premium
+* mais confiável
+* mantendo alta conversão
+
+━━━━━━━━━━━
+NOVA ESTRUTURA DE PREÇO
+━━━━━━━━━━━
+
+Valor total:
+~~R$97,00~~
+
+Preço atual:
+R$10,90
+
+Badge:
+“89% OFF”
+
+Substituir completamente:
+
+* “94% OFF”
+* “R$188,40”
+* “Oferta encerrando”
+
+━━━━━━━━━━━
+NOVO TEXTO SUPERIOR
+━━━━━━━━━━━
+
+Trocar:
+“OFERTA ENCERRANDO”
+
+Por:
+“OFERTA ESPECIAL”
+
+Manter:
+
+* badge vermelho
+* visual chamativo
+* aparência premium
+
+━━━━━━━━━━━
+LISTA DE BÔNUS
+━━━━━━━━━━━
+
+Ajustar os valores individuais riscados dos bônus para que o somatório total fique coerente com R$97,00.
+
+Nova distribuição sugerida:
+
+✨ Rotina de 15 minutos — R$14,90
+✨ Guia para mães — R$17,90
+✨ Atividades extras — R$12,90
+✨ Lista de palavras — R$9,90
+✨ Plano semanal passo a passo — R$14,90
+✨ Jogos de alfabetização — R$17,90
+✨ Checklist de evolução — R$9,90
+
+Garantir que:
+
+* o somatório visual faça sentido
+* os preços pareçam naturais
+* não pareça desconto artificial
+
+━━━━━━━━━━━
+VALOR TOTAL
+━━━━━━━━━━━
+
+Trocar:
+“Valor total (Método + Bônus):”
+
+Para:
+“Valor total de todo o material:”
+
+Valor riscado:
+~~R$97,00~~
+
+━━━━━━━━━━━
+ÁREA CENTRAL DO PREÇO
+━━━━━━━━━━━
+
+Manter:
+“HOJE POR APENAS”
+
+Preço:
+R$10,90
+
+Manter:
+
+* destaque grande
+* aparência premium
+* tipografia forte
+
+━━━━━━━━━━━
+TEXTO ABAIXO DO PREÇO
+━━━━━━━━━━━
+
+Trocar:
+“Você está recebendo tudo isso com mais de 94% de desconto.”
+
+Por:
+“Você recebe acesso completo ao método e todos os bônus por uma condição especial de lançamento.”
+
+Visual:
+
+* elegante
+* mais premium
+* menos agressivo
+* mais confiável
+
+━━━━━━━━━━━
+CTA
+━━━━━━━━━━━
+
+Manter o CTA azul/turquesa atual.
+
+Texto:
+“QUERO COMEÇAR AGORA”
+
+Manter:
+
+* gradiente azul → turquesa
+* brilho suave
+* hover elegante
+* aparência premium
+
+━━━━━━━━━━━
+RESULTADO FINAL
+━━━━━━━━━━━
+
+A seção precisa parecer:
+
+* mais confiável
+* mais profissional
+* menos “template genérico”
+* mais premium
+* mais alinhada com marcas modernas infantis
+
+A identidade visual atual da seção está ótima e deve ser preservada.

@@ -516,7 +516,7 @@ function Home() {
             <div className="bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden text-white relative">
               {/* Background accents */}
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-decola-blue rounded-full blur-3xl opacity-20 pointer-events-none"></div>
-              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-decola-green rounded-full blur-3xl opacity-20 pointer-events-none"></div>
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-decola-blue rounded-full blur-3xl opacity-20 pointer-events-none"></div>
               
               <div className="p-5 sm:p-8 md:p-12 lg:p-16 grid lg:grid-cols-2 gap-12 relative z-10">
                 
@@ -534,13 +534,13 @@ function Home() {
                       <p className="text-sm font-bold text-slate-400 mb-3 uppercase tracking-wider">Bônus Exclusivos:</p>
                       
                       {[
-                        { title: "Rotina de 15 minutos", value: "R$ 12,90" },
+                        { title: "Rotina de 15 minutos", value: "R$ 14,90" },
                         { title: "Guia para mães", value: "R$ 17,90" },
-                        { title: "Atividades extras", value: "R$ 14,90" },
+                        { title: "Atividades extras", value: "R$ 12,90" },
                         { title: "Lista de palavras", value: "R$ 9,90" },
-                        { title: "Plano semanal passo a passo", value: "R$ 12,90" },
-                        { title: "Jogos de alfabetização", value: "R$ 14,90" },
-                        { title: "Checklist de evolução", value: "R$ 7,90" },
+                        { title: "Plano semanal passo a passo", value: "R$ 14,90" },
+                        { title: "Jogos de alfabetização", value: "R$ 17,90" },
+                        { title: "Checklist de evolução", value: "R$ 9,90" },
                       ].map((bonus, i) => (
                         <div key={i} className="flex justify-between items-center py-2">
                           <div className="flex items-center gap-2">
@@ -554,28 +554,28 @@ function Home() {
                   </div>
                   
                   <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 flex flex-wrap gap-2 justify-between items-center">
-                    <span className="text-slate-300 text-sm sm:text-base">Valor total (Método + Bônus):</span>
-                    <span className="text-red-400 font-bold line-through text-sm sm:text-base">R$ 188,40</span>
+                    <span className="text-slate-300 text-sm sm:text-base">Valor total de todo o material:</span>
+                    <span className="text-red-400 font-bold line-through text-sm sm:text-base">R$ 97,00</span>
                   </div>
                 </div>
 
                 {/* Right: Checkout */}
                 <div className="bg-white text-slate-900 rounded-3xl p-5 sm:p-8 text-center flex flex-col justify-center items-center shadow-2xl relative min-w-0">
                   <div className="absolute -top-4 bg-red-500 text-white font-bold px-6 py-1.5 rounded-full text-sm animate-pulse">
-                    OFERTA ENCERRANDO
+                    OFERTA ESPECIAL
                   </div>
 
                   <p className="text-slate-500 font-medium mb-3 mt-2">Acesso completo com todos os bônus:</p>
 
                   <div className="mb-3">
                     <span className="text-base text-slate-500 font-medium">
-                      Valor total: <span className="line-through decoration-red-500 decoration-2">R$ 188,40</span>
+                      Valor total: <span className="line-through decoration-red-500 decoration-2">R$ 97,00</span>
                     </span>
                   </div>
 
                   <div className="relative w-full mb-2">
                     <div className="absolute -top-2 -right-1 sm:-right-2 bg-red-600 text-white font-extrabold text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg rotate-[8deg] border-2 border-white">
-                      94% OFF
+                      89% OFF
                     </div>
                     <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-decola-yellow/40 rounded-2xl py-5 px-4">
                       <p className="text-sm md:text-base font-bold text-slate-700 uppercase tracking-wide mb-1">Hoje por apenas</p>
@@ -584,7 +584,7 @@ function Home() {
                   </div>
 
                   <p className="text-sm font-semibold mb-6 bg-blue-50 border border-blue-100 py-2 px-4 rounded-lg w-full" style={{ color: "#1d4ed8" }}>
-                    Você está recebendo tudo isso com mais de <span className="font-extrabold">94% de desconto</span>.
+                    Você recebe acesso completo ao método e todos os bônus por uma <span className="font-extrabold">condição especial de lançamento</span>.
                   </p>
 
                   <a href="https://decola-kids.pay.yampi.com.br/r/R2J8BILZT0" target="_blank" rel="noopener noreferrer" className="w-full block">
