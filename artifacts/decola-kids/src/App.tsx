@@ -583,12 +583,12 @@ function Home() {
                     </div>
                   </div>
 
-                  <p className="text-sm font-semibold text-decola-green mb-6 bg-green-50 border border-green-100 py-2 px-4 rounded-lg w-full">
+                  <p className="text-sm font-semibold mb-6 bg-blue-50 border border-blue-100 py-2 px-4 rounded-lg w-full" style={{ color: "#1d4ed8" }}>
                     Você está recebendo tudo isso com mais de <span className="font-extrabold">94% de desconto</span>.
                   </p>
 
                   <a href="https://decola-kids.pay.yampi.com.br/r/R2J8BILZT0" target="_blank" rel="noopener noreferrer" className="w-full block">
-                    <button className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-6 px-8 rounded-2xl text-xl font-bold hover:-translate-y-1 transition-all duration-300" style={{ background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 50%, #06b6d4 100%)", boxShadow: "0 4px 24px rgba(29,78,216,0.35)" }}>
+                    <button className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-6 px-8 rounded-2xl text-xl font-bold hover:-translate-y-1 transition-all duration-300 whitespace-nowrap" style={{ background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 50%, #06b6d4 100%)", boxShadow: "0 4px 24px rgba(29,78,216,0.35)" }}>
                       QUERO COMEÇAR AGORA
                     </button>
                   </a>
