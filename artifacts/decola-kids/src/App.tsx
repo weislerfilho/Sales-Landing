@@ -15,82 +15,99 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VSL Section — VTurb embed + CTA
+   VSL Section — VTurb embed + CTA (on-brand, light design)
    ============================================================ */
 function VSLSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (document.getElementById("vturb-sdk")) return;
-    const s = document.createElement("script");
-    s.id = "vturb-sdk";
-    s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-    s.async = true;
-    document.head.appendChild(s);
+    // Inject VTurb SDK script once
+    if (!document.getElementById("vturb-sdk")) {
+      const s = document.createElement("script");
+      s.id = "vturb-sdk";
+      s.type = "text/javascript";
+      s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+      s.async = true;
+      document.head.appendChild(s);
+    }
+
+    // Inject the iframe HTML exactly as provided, without React modifying it
+    if (containerRef.current) {
+      containerRef.current.innerHTML = `
+        <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
+          <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a150ff474d91fbf632df4c5_aspect">
+            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a150ff474d91fbf632df4c5"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+              referrerpolicy="origin"
+              onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)">
+            </iframe>
+          </div>
+        </div>
+      `;
+    }
   }, []);
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="py-16 px-4 md:px-6"
-      style={{
-        background: "linear-gradient(135deg, #0a0f2e 0%, #0d1b6e 40%, #1a3a8f 70%, #0e7490 100%)"
-      }}
+      className="relative py-16 md:py-24 px-4 md:px-6 bg-white overflow-visible"
     >
-      <div className="max-w-[900px] mx-auto">
+      {/* Subtle decorative stars — matching site style */}
+      <FloatingStar className="top-6 left-[5%] text-decola-yellow" size={18} delay={0} />
+      <FloatingStar className="top-10 right-[6%] text-decola-purple" size={14} delay={1.2} />
+      <FloatingStar className="bottom-10 left-[8%] text-decola-blue/40" size={12} delay={0.6} />
+      <FloatingStar className="bottom-6 right-[10%] text-decola-orange" size={16} delay={2} />
+
+      {/* Soft background glow blobs */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden -z-10"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-[0.07]"
+          style={{ background: "radial-gradient(ellipse, #1d4ed8 0%, transparent 70%)" }} />
+        <div className="absolute bottom-0 right-[15%] w-[300px] h-[200px] rounded-full opacity-[0.06]"
+          style={{ background: "radial-gradient(ellipse, #06b6d4 0%, transparent 70%)" }} />
+      </div>
+
+      <div className="max-w-[900px] mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-3">
-            Veja como o método Decola Kids transforma o aprendizado infantil
+          <Badge variant="outline" className="mb-4 bg-blue-50 text-decola-blue border-blue-200">
+            Veja por dentro
+          </Badge>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight mb-3">
+            Veja como o método Decola Kids<br className="hidden sm:block" /> transforma o aprendizado infantil
           </h2>
-          <p className="text-base md:text-lg text-blue-200 font-medium">
+          <p className="text-base md:text-lg text-slate-500 font-medium max-w-xl mx-auto">
             Aprender brincando faz a criança evoluir muito mais rápido
           </p>
         </div>
 
-        {/* VTurb embed */}
+        {/* Video card — glassmorphism light */}
         <div
-          className="rounded-2xl overflow-hidden shadow-2xl border border-white/10"
-          style={{ background: "#000" }}
+          className="mx-auto rounded-3xl border border-slate-100 shadow-xl overflow-visible"
+          style={{
+            background: "rgba(255,255,255,0.85)",
+            backdropFilter: "blur(12px)",
+            maxWidth: 440,
+            padding: "20px 20px 24px",
+            boxShadow: "0 8px 40px rgba(29,78,216,0.10), 0 2px 12px rgba(0,0,0,0.06)"
+          }}
         >
-          <div
-            id="ifr_6a150ff474d91fbf632df4c5_wrapper"
-            style={{ margin: "0 auto", width: "100%", maxWidth: "400px" }}
-          >
-            <div
-              style={{ position: "relative", paddingTop: "177.77777777777777%", width: "100%" }}
-              id="ifr_6a150ff474d91fbf632df4c5_aspect"
-            >
-              <iframe
-                frameBorder={0}
-                allowFullScreen
-                src="about:blank"
-                id="ifr_6a150ff474d91fbf632df4c5"
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-                referrerPolicy="origin"
-                onLoad={(e) => {
-                  const el = e.currentTarget;
-                  el.onload = null;
-                  el.src =
-                    "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html" +
-                    (location.search || "?") +
-                    "&vl=" +
-                    encodeURIComponent(location.href);
-                }}
-              />
-            </div>
-          </div>
+          <div ref={containerRef} className="w-full" />
         </div>
 
         {/* CTA Button */}
         <div className="mt-8 md:mt-10 flex justify-center">
           <button
             onClick={scrollToOffer}
-            className="vsl-cta-btn group relative inline-flex items-center gap-3 text-white font-extrabold text-lg md:text-xl py-5 px-10 rounded-2xl shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
+            className="vsl-cta-btn group inline-flex items-center gap-3 text-white font-extrabold text-base md:text-lg py-4 px-8 rounded-2xl transition-all duration-300 hover:-translate-y-0.5"
             style={{
-              background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 50%, #06b6d4 100%)",
-              border: "2px solid rgba(255,255,255,0.15)"
+              background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #06b6d4 100%)",
+              boxShadow: "0 4px 20px rgba(29,78,216,0.3)"
             }}
           >
             <span>QUERO ACESSAR AGORA</span>
