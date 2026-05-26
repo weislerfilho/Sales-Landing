@@ -79,7 +79,7 @@ function VSLSection() {
             Veja por dentro
           </Badge>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight mb-3">
-            Veja como o método Decola Kids<br className="hidden sm:block" /> transforma o aprendizado infantil
+            Veja como o método <span className="text-decola-orange">Decola Kids</span><br className="hidden sm:block" /> transforma o aprendizado infantil
           </h2>
           <p className="text-base md:text-lg text-slate-500 font-medium max-w-xl mx-auto">
             Aprender brincando faz a criança evoluir muito mais rápido
@@ -102,13 +102,13 @@ function VSLSection() {
 
         {/* CTA Button */}
         <div className="mt-8 md:mt-10 flex justify-center">
-          <button
+          <Button
             onClick={scrollToOffer}
-            className="btn-cta-pulse group inline-flex items-center gap-2 text-white font-medium text-lg py-7 px-8 rounded-2xl bg-decola-green hover:bg-green-600 border-green-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto justify-center"
+            className="btn-cta-pulse bg-decola-green hover:bg-green-600 text-white border-green-700 text-lg py-7 px-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
           >
             QUERO ACESSAR AGORA
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
         </div>
       </div>
     </motion.section>
