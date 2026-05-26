@@ -17,89 +17,58 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VSL Section — VTurb embed + CTA
-   IMPORTANT: This section uses a plain <section> (NOT motion.section)
-   to prevent framer-motion animations from causing iframe repaints/restarts.
-   The player is injected once via IntersectionObserver (lazy) and guarded
-   by a module-level flag so it NEVER reinjects on re-render or remount.
+   VTurb player — isolated, static, never re-renders.
+   React.memo with no props = React NEVER touches this subtree again
+   after the first render. dangerouslySetInnerHTML hands the iframe
+   DOM entirely to the browser; React will not reconcile it.
    ============================================================ */
-let _vslPlayerInjected = false;
-
-function VSLSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
+const VTurbEmbed = React.memo(function VTurbEmbed() {
   useEffect(() => {
-    const container = containerRef.current;
-    const section = sectionRef.current;
-    if (!container || !section || _vslPlayerInjected) return;
-
-    const injectPlayer = () => {
-      if (_vslPlayerInjected) return;
-      _vslPlayerInjected = true;
-
-      // Inject VTurb SDK script — once per page load only
-      if (!document.getElementById("vturb-sdk")) {
-        const s = document.createElement("script");
-        s.id = "vturb-sdk";
-        s.type = "text/javascript";
-        s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-        s.async = true;
-        document.head.appendChild(s);
-      }
-
-      // Inject iframe HTML directly — bypasses React reconciliation entirely
-      container.innerHTML = `
-        <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin: 0 auto; width: 100%; max-width: 340px;">
-          <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a150ff474d91fbf632df4c5_aspect">
-            <iframe
-              id="ifr_6a150ff474d91fbf632df4c5"
-              frameborder="0"
-              allowfullscreen
-              allow="autoplay; fullscreen"
-              referrerpolicy="origin"
-              src="about:blank"
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-              onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href) +'&t=0'">
-            </iframe>
-          </div>
-        </div>
-      `;
-    };
-
-    // Lazy-load: inject only when section enters viewport
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          observer.disconnect();
-          injectPlayer();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(section);
-
-    return () => observer.disconnect();
+    if (!document.getElementById("vturb-sdk")) {
+      const s = document.createElement("script");
+      s.id = "vturb-sdk";
+      s.type = "text/javascript";
+      s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+      s.async = true;
+      document.head.appendChild(s);
+    }
   }, []);
 
   return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `
+          <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin:0 auto;width:100%;max-width:340px;">
+            <div style="position:relative;padding:177.77777777777777% 0 0 0;">
+              <iframe
+                id="ifr_6a150ff474d91fbf632df4c5"
+                frameborder="0"
+                allowfullscreen
+                allow="autoplay; fullscreen"
+                referrerpolicy="origin"
+                src="about:blank"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+                onload="this.onload=null,this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)+'&t=0'">
+              </iframe>
+            </div>
+          </div>
+        `,
+      }}
+    />
+  );
+});
+
+/* ============================================================
+   VSL Section — plain static <section>, no motion, no observers.
+   Also wrapped in React.memo so parent re-renders don't touch it.
+   ============================================================ */
+const VSLSection = React.memo(function VSLSection() {
+  return (
     <section
       id="vsl"
-      ref={sectionRef}
       className="relative py-16 md:py-24 px-4 md:px-6 bg-white overflow-visible"
     >
-      {/* Static background glow blobs — no animation, no repaint */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden -z-10"
-      >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-[0.07]"
-          style={{ background: "radial-gradient(ellipse, #1d4ed8 0%, transparent 70%)" }} />
-        <div className="absolute bottom-0 right-[15%] w-[300px] h-[200px] rounded-full opacity-[0.06]"
-          style={{ background: "radial-gradient(ellipse, #06b6d4 0%, transparent 70%)" }} />
-      </div>
-
-      <div className="max-w-[900px] mx-auto relative z-10">
+      <div className="max-w-[900px] mx-auto">
         {/* Header */}
         <div className="text-center mb-8 md:mb-10">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight mb-3">
@@ -110,17 +79,16 @@ function VSLSection() {
           </p>
         </div>
 
-        {/* Video card — static wrapper, NO transforms/animations around the iframe */}
+        {/* Video card — completely static, no backdrop-filter, no transforms */}
         <div
-          className="mx-auto rounded-3xl border border-slate-100 shadow-xl overflow-visible"
+          className="mx-auto rounded-3xl border border-slate-100 shadow-xl"
           style={{
-            background: "rgba(255,255,255,0.85)",
+            background: "#ffffff",
             maxWidth: 380,
             padding: "16px 16px 20px",
-            boxShadow: "0 8px 40px rgba(29,78,216,0.10), 0 2px 12px rgba(0,0,0,0.06)"
           }}
         >
-          <div ref={containerRef} className="w-full" />
+          <VTurbEmbed />
         </div>
 
         {/* CTA Button */}
@@ -140,7 +108,7 @@ function VSLSection() {
       </div>
     </section>
   );
-}
+});
 
 /* ============================================================
    Decorative animated elements (sutis, leves, on-brand)

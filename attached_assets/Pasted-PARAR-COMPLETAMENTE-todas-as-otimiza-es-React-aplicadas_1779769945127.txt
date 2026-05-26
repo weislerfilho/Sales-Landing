@@ -1,0 +1,122 @@
+PARAR COMPLETAMENTE todas as otimizações React aplicadas na VTurb.
+
+As correções anteriores pioraram o problema.
+
+Remover:
+
+* IntersectionObserver
+* lazy injection
+* guards de injeção
+* lógica dinâmica
+* reinjeção de script
+* qualquer observer
+* qualquer remount inteligente
+* qualquer controle manual do iframe
+
+━━━━━━━━━━━
+OBJETIVO
+━━━━━━━━━━━
+
+A VTurb deve funcionar da forma mais simples possível:
+HTML estático puro.
+
+Sem:
+
+* otimizações React
+* reinicializações
+* controle dinâmico
+* carregamento inteligente
+
+━━━━━━━━━━━
+IMPLEMENTAÇÃO CORRETA
+━━━━━━━━━━━
+
+A VSL deve:
+
+1. Renderizar UMA única vez.
+
+2. Inserir o embed VTurb diretamente no HTML final.
+
+3. NÃO usar:
+
+* useEffect complexo
+* observer
+* hooks de viewport
+* animações JS
+* lazy mount
+* reinjeção de DOM
+
+4. NÃO recriar:
+
+* iframe
+* wrapper
+* script
+
+5. O componente da VSL deve ser totalmente estático após renderização inicial.
+
+━━━━━━━━━━━
+MUITO IMPORTANTE
+━━━━━━━━━━━
+
+O problema atual é causado por:
+
+* múltiplas recomposições
+* reinicialização do player
+* script da ConverteAI sendo executado novamente
+* React interferindo no DOM do player
+
+━━━━━━━━━━━
+CORREÇÃO DEFINITIVA
+━━━━━━━━━━━
+
+Usar uma destas abordagens:
+
+OPÇÃO 1 (preferencial):
+Inserir o embed como HTML puro diretamente no SSR/final HTML.
+
+OU
+
+OPÇÃO 2:
+Criar um componente isolado que:
+
+* renderiza apenas uma vez
+* nunca atualiza
+* nunca rerenderiza
+* nunca desmonta
+
+Usar:
+React.memo()
+
+e garantir:
+
+* nenhuma prop mutável
+* nenhum state
+* nenhum rerender
+
+━━━━━━━━━━━
+PROIBIDO
+━━━━━━━━━━━
+
+Não usar:
+
+* motion.section
+* whileInView
+* IntersectionObserver
+* lazy loading customizado
+* script reinjection
+* viewport hooks
+* suspense
+* hydration dinâmica da VTurb
+
+━━━━━━━━━━━
+RESULTADO ESPERADO
+━━━━━━━━━━━
+
+O player deve:
+
+* carregar apenas uma vez
+* não reiniciar
+* não entrar em loop
+* não exibir buffering repetido
+* não recriar sessão
+* tocar suavemente no mobile
