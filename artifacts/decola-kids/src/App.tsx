@@ -588,9 +588,9 @@ function Home() {
                   </p>
 
                   <a href="https://decola-kids.pay.yampi.com.br/r/R2J8BILZT0" target="_blank" rel="noopener noreferrer" className="w-full block">
-                    <Button className="btn-cta-pulse w-full bg-decola-green hover:bg-green-600 text-white border-green-700 py-6 px-8 rounded-2xl text-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all">
+                    <button className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-6 px-8 rounded-2xl text-xl font-bold hover:-translate-y-1 transition-all duration-300" style={{ background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 50%, #06b6d4 100%)", boxShadow: "0 4px 24px rgba(29,78,216,0.35)" }}>
                       QUERO COMEÇAR AGORA
-                    </Button>
+                    </button>
                   </a>
 
                   <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400 font-medium">
