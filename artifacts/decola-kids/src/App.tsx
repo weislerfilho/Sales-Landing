@@ -104,11 +104,7 @@ function VSLSection() {
         <div className="mt-8 md:mt-10 flex justify-center">
           <button
             onClick={scrollToOffer}
-            className="vsl-cta-btn group inline-flex items-center gap-2 text-white font-medium text-lg py-7 px-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-full sm:w-auto justify-center"
-            style={{
-              background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #06b6d4 100%)",
-              boxShadow: "0 4px 20px rgba(29,78,216,0.3)"
-            }}
+            className="btn-cta-pulse group inline-flex items-center gap-2 text-white font-medium text-lg py-7 px-8 rounded-2xl bg-decola-green hover:bg-green-600 border-green-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto justify-center"
           >
             QUERO ACESSAR AGORA
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
