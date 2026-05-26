@@ -1,0 +1,106 @@
+Substituir completamente a implementação atual da VSL pelo embed VTurb atualizado abaixo.
+
+IMPORTANTE:
+
+* Não alterar o design da seção
+* Não alterar CTA
+* Não alterar responsividade
+* Apenas substituir a implementação técnica do player
+
+━━━━━━━━━━━
+ANTES DE TUDO
+━━━━━━━━━━━
+
+Remover COMPLETAMENTE:
+
+* implementações antigas da VTurb
+* scripts antigos
+* preload antigo
+* player.js antigo
+* smartplayer antigo
+* useEffect antigos relacionados ao player
+* appendChild antigos
+* embeds anteriores
+* iframes anteriores
+
+Garantir que exista APENAS UMA implementação VTurb na página.
+
+━━━━━━━━━━━
+IMPLEMENTAÇÃO
+━━━━━━━━━━━
+
+Inserir exatamente este embed:
+
+```html
+<script type="text/javascript">
+var s=document.createElement("script");
+s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js",
+s.async=!0,
+document.head.appendChild(s);
+</script>
+
+<div id="ifr_6a152c76d5f1680e510ada41_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
+  <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a152c76d5f1680e510ada41_aspect">
+    
+    <iframe
+      frameborder="0"
+      allowfullscreen
+      allow="autoplay; fullscreen"
+      src="about:blank"
+      id="ifr_6a152c76d5f1680e510ada41"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+      referrerpolicy="origin"
+      onload="
+        this.onload=null;
+        this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html'
+        +(location.search||'?')
+        +'&vl='
+        +encodeURIComponent(location.href)
+      ">
+      
+    </iframe>
+
+  </div>
+</div>
+```
+
+━━━━━━━━━━━
+MUITO IMPORTANTE
+━━━━━━━━━━━
+
+Não usar:
+
+* React remount
+* conditional rendering
+* motion.div
+* AnimatePresence
+* whileInView
+* lazy load
+* suspense
+* viewport animation
+
+A seção da VSL deve permanecer estática após o primeiro render.
+
+━━━━━━━━━━━
+CONFIGURAÇÃO VTURB
+━━━━━━━━━━━
+
+O player já foi configurado com:
+
+* Continuar assistindo = OFF
+* Progresso inteligente = OFF
+
+Então NÃO implementar nenhuma lógica de resume/sessão no código.
+
+━━━━━━━━━━━
+OBJETIVO
+━━━━━━━━━━━
+
+Garantir:
+
+* carregamento único
+* player estável
+* sem loop
+* sem buffering infinito
+* sem tela “continuar assistindo”
+* sem reinicializações

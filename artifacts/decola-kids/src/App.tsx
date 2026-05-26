@@ -17,17 +17,42 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VSL Section — single static iframe pointing directly to
-   VTurb's embed.html. No SDK, no scripts, no onload tricks,
-   no dynamic injection. React.memo ensures it never re-renders.
-   Debug logs confirm single mount / zero unmounts / zero rerenders.
+   VSL Section — VTurb SDK embed (sdk.js + onload src swap).
+   React.memo: never re-renders after mount.
+   sdk.js injected once via global guard (__vturbSdkLoaded).
+   iframe src set imperatively on its own onload event.
+   Debug logs confirm: 1 mount / 0 unmounts / 0 rerenders.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
   const renderCount = useRef(0);
   renderCount.current += 1;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     console.log("[VSL] mount — render count:", renderCount.current);
+
+    // Inject sdk.js exactly once per page lifetime
+    if (!(window as any).__vturbSdkLoaded) {
+      (window as any).__vturbSdkLoaded = true;
+      const s = document.createElement("script");
+      s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+      s.async = true;
+      document.head.appendChild(s);
+    }
+
+    // Set iframe src via onload (VTurb's standard embed pattern)
+    const iframe = iframeRef.current;
+    if (iframe) {
+      iframe.onload = function () {
+        iframe.onload = null;
+        iframe.src =
+          "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html" +
+          (location.search || "?") +
+          "&vl=" +
+          encodeURIComponent(location.href);
+      };
+    }
+
     return () => {
       console.log("[VSL] UNMOUNT — this should never appear");
     };
@@ -58,19 +83,24 @@ const VSLSection = React.memo(function VSLSection() {
           className="mx-auto rounded-3xl border border-slate-100 shadow-xl"
           style={{ background: "#ffffff", maxWidth: 432, padding: "16px 16px 20px" }}
         >
-          {/* 9:16 aspect-ratio wrapper */}
-          <div style={{ position: "relative", paddingTop: "177.77777777777777%", width: "100%" }}>
+          <div
+            id="ifr_6a152c76d5f1680e510ada41_aspect"
+            style={{ position: "relative", paddingTop: "177.77777777777777%" }}
+          >
             <iframe
-              src="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html"
-              width="100%"
-              height="100%"
+              ref={iframeRef}
+              id="ifr_6a152c76d5f1680e510ada41"
+              src="about:blank"
               frameBorder="0"
-              allow="autoplay; fullscreen; encrypted-media"
               allowFullScreen
+              allow="autoplay; fullscreen"
+              referrerPolicy="origin"
               style={{
                 position: "absolute",
                 top: 0,
                 left: 0,
+                width: "100%",
+                height: "100%",
                 border: "none",
               }}
             />
