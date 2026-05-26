@@ -17,76 +17,9 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VTurb Player — completely isolated from React's reconciler.
-
-   Strategy:
-   - React.memo() → component never re-renders after mount
-   - injectedRef   → useRef guard prevents double-execution in
-                     any future edge case (StrictMode, hot reload)
-   - window.__vturbLoaded → global flag ensures sdk.js is only
-                     appended to <head> once per page lifetime
-   - All DOM nodes (wrapper, iframe) created imperatively via
-     document.createElement — React never holds a reference to
-     them and cannot reconcile / unmount / recreate them.
-   ============================================================ */
-const VTurbPlayer = React.memo(function VTurbPlayer() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const injectedRef  = useRef(false);
-
-  useEffect(() => {
-    if (injectedRef.current) return;
-    injectedRef.current = true;
-
-    const container = containerRef.current;
-    if (!container) return;
-
-    // ── 1. Inject sdk.js exactly once per page ──────────────
-    if (!(window as any).__vturbLoaded) {
-      (window as any).__vturbLoaded = true;
-      const s = document.createElement("script");
-      s.src   = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-      s.async = true;
-      document.head.appendChild(s);
-    }
-
-    // ── 2. Build wrapper ────────────────────────────────────
-    const wrapper          = document.createElement("div");
-    wrapper.id             = "ifr_6a152c76d5f1680e510ada41_wrapper";
-    wrapper.style.cssText  = "margin:0 auto;width:100%;max-width:400px;";
-
-    const aspect           = document.createElement("div");
-    aspect.id              = "ifr_6a152c76d5f1680e510ada41_aspect";
-    aspect.style.cssText   = "position:relative;padding:177.77777777777777% 0 0 0;";
-
-    // ── 3. Create iframe — src set via onload trick ─────────
-    const iframe               = document.createElement("iframe");
-    iframe.id                  = "ifr_6a152c76d5f1680e510ada41";
-    iframe.frameBorder         = "0";
-    iframe.allowFullscreen     = true;
-    iframe.referrerPolicy      = "origin";
-    iframe.src                 = "about:blank";
-    iframe.style.cssText       = "position:absolute;top:0;left:0;width:100%;height:100%;border:none;";
-    iframe.setAttribute("allow", "autoplay; fullscreen; encrypted-media");
-    iframe.onload = function () {
-      iframe.onload = null;
-      iframe.src =
-        "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html" +
-        (location.search || "?") +
-        "&vl=" + encodeURIComponent(location.href);
-    };
-
-    aspect.appendChild(iframe);
-    wrapper.appendChild(aspect);
-    container.appendChild(wrapper);
-  }, []);
-
-  return <div ref={containerRef} />;
-});
-
-/* ============================================================
-   VSL Section — visual shell only. VTurbPlayer handles all
-   player logic; this component is also memo'd so parent
-   re-renders never cascade down to the player.
+   VSL Section — single static iframe pointing directly to
+   VTurb's embed.html. No SDK, no scripts, no onload tricks,
+   no dynamic injection. React.memo ensures it never re-renders.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
   return (
@@ -105,12 +38,28 @@ const VSLSection = React.memo(function VSLSection() {
           </p>
         </div>
 
-        {/* Video card — static white card, no backdrop-filter, no CSS transforms */}
+        {/* Video card */}
         <div
           className="mx-auto rounded-3xl border border-slate-100 shadow-xl"
           style={{ background: "#ffffff", maxWidth: 432, padding: "16px 16px 20px" }}
         >
-          <VTurbPlayer />
+          {/* 9:16 aspect-ratio wrapper */}
+          <div style={{ position: "relative", paddingTop: "177.77777777777777%", width: "100%" }}>
+            <iframe
+              src="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allow="autoplay; fullscreen; encrypted-media"
+              allowFullScreen
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                border: "none",
+              }}
+            />
+          </div>
         </div>
 
         {/* CTA Button */}
