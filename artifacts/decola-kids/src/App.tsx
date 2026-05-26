@@ -17,45 +17,10 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VTurb player — isolated, static, mounts ONCE, never re-renders.
-   React.memo with no props = React never touches this subtree again.
-   dangerouslySetInnerHTML = browser owns the entire iframe DOM.
-   sdk.js is injected here once via the static HTML string.
-   ============================================================ */
-const VTurbEmbed = React.memo(function VTurbEmbed() {
-  return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `
-<script type="text/javascript">
-var s=document.createElement("script");
-s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js",
-s.async=!0,document.head.appendChild(s);
-</script>
-
-<div id="ifr_6a152c76d5f1680e510ada41_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
-  <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a152c76d5f1680e510ada41_aspect">
-    <iframe
-      frameborder="0"
-      allowfullscreen
-      src="about:blank"
-      id="ifr_6a152c76d5f1680e510ada41"
-      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-      referrerpolicy="origin"
-      onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)">
-    </iframe>
-  </div>
-</div>
-        `,
-      }}
-    />
-  );
-});
-
-/* ============================================================
-   VSL Section — plain static <section>, no motion, no observers,
-   no backdrop-filter, no transforms on the video wrapper.
-   Also wrapped in React.memo so parent re-renders never touch it.
+   VSL Section — VTurb runs in a fully isolated static iframe
+   (/public/vsl.html). React never touches the player DOM at all:
+   no lifecycle, no HMR, no re-renders, no StrictMode double-invoke.
+   The outer iframe is sized to the 9:16 aspect ratio of the video.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
   return (
@@ -77,13 +42,26 @@ const VSLSection = React.memo(function VSLSection() {
         {/* Video card — static white card, no backdrop-filter, no CSS transforms */}
         <div
           className="mx-auto rounded-3xl border border-slate-100 shadow-xl"
-          style={{
-            background: "#ffffff",
-            maxWidth: 432,
-            padding: "16px 16px 20px",
-          }}
+          style={{ background: "#ffffff", maxWidth: 432, padding: "16px 16px 20px" }}
         >
-          <VTurbEmbed />
+          {/* Aspect-ratio wrapper for 9:16 vertical video */}
+          <div style={{ position: "relative", paddingTop: "177.77777777777777%", width: "100%" }}>
+            <iframe
+              src="/vsl.html"
+              title="Decola Kids — VSL"
+              frameBorder="0"
+              allowFullScreen
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+                overflow: "hidden",
+              }}
+            />
+          </div>
         </div>
 
         {/* CTA Button */}
