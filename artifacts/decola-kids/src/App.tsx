@@ -18,14 +18,19 @@ const queryClient = new QueryClient();
 
 /* ============================================================
    VTurb player — isolated, static, never re-renders.
-   React.memo with no props = React NEVER touches this subtree again
-   after the first render. dangerouslySetInnerHTML hands the iframe
-   DOM entirely to the browser; React will not reconcile it.
+
+   _vslSid: computed ONCE when the JS module first loads (not in an
+   effect, not in render). A unique session ID per page load forces
+   VTurb to treat every visit as a fresh session, bypassing its
+   cross-origin iframe localStorage (which we cannot clear) and
+   preventing the "continuar assistindo" prompt.
+
+   React.memo with no props = React NEVER re-renders this subtree.
+   dangerouslySetInnerHTML = browser owns the iframe DOM entirely.
    ============================================================ */
+const _vslSid = Date.now();
+
 const VTurbEmbed = React.memo(function VTurbEmbed() {
-  // No effects — SDK is loaded once globally via index.html <head>.
-  // This component is a pure render: dangerouslySetInnerHTML sets the
-  // iframe HTML once and React never reconciles or touches it again.
   return (
     <div
       dangerouslySetInnerHTML={{
@@ -40,7 +45,7 @@ const VTurbEmbed = React.memo(function VTurbEmbed() {
                 referrerpolicy="origin"
                 src="about:blank"
                 style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-                onload="this.onload=null,this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)+'&t=0'">
+                onload="this.onload=null,this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)+'&sid=${_vslSid}&t=0'">
               </iframe>
             </div>
           </div>
