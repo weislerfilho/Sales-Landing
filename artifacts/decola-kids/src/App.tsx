@@ -21,6 +21,16 @@ function VSLSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Clear VTurb resume/progress data so video always starts from beginning
+    try {
+      const vid = "6a150ff474d91fbf632df4c5";
+      Object.keys(localStorage).forEach((k) => {
+        if (k.includes(vid) || k.includes("smartplayer") || k.includes("converteai")) {
+          localStorage.removeItem(k);
+        }
+      });
+    } catch (_) {}
+
     // Inject VTurb SDK script once
     if (!document.getElementById("vturb-sdk")) {
       const s = document.createElement("script");
@@ -31,15 +41,18 @@ function VSLSection() {
       document.head.appendChild(s);
     }
 
+    // Unique session param so player never detects a returning viewer
+    const sid = Date.now();
+
     // Inject the iframe HTML exactly as provided, without React modifying it
     if (containerRef.current) {
       containerRef.current.innerHTML = `
-        <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
+        <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin: 0 auto; width: 100%; max-width: 340px;">
           <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a150ff474d91fbf632df4c5_aspect">
             <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a150ff474d91fbf632df4c5"
               style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
               referrerpolicy="origin"
-              onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)">
+              onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href) +'&sid=${sid}&t=0'">
             </iframe>
           </div>
         </div>
@@ -89,8 +102,8 @@ function VSLSection() {
           style={{
             background: "rgba(255,255,255,0.85)",
             backdropFilter: "blur(12px)",
-            maxWidth: 440,
-            padding: "20px 20px 24px",
+            maxWidth: 380,
+            padding: "16px 16px 20px",
             boxShadow: "0 8px 40px rgba(29,78,216,0.10), 0 2px 12px rgba(0,0,0,0.06)"
           }}
         >
@@ -99,13 +112,17 @@ function VSLSection() {
 
         {/* CTA Button */}
         <div className="mt-8 md:mt-10 flex justify-center">
-          <Button
+          <button
             onClick={scrollToOffer}
-            className="btn-cta-pulse bg-decola-green hover:bg-green-600 text-white border-green-700 text-lg py-7 px-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+            className="vsl-cta-btn group inline-flex items-center justify-center gap-2 text-white font-medium text-lg py-7 px-8 rounded-2xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+            style={{
+              background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 50%, #06b6d4 100%)",
+              boxShadow: "0 4px 24px rgba(29,78,216,0.35)"
+            }}
           >
             QUERO ACESSAR AGORA
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+          </button>
         </div>
       </div>
     </motion.section>
@@ -335,6 +352,16 @@ function Home() {
               Com apenas 15 minutos por dia usando o Método Decola Kids™.
             </p>
 
+            <div className="flex justify-center mb-2">
+              <button
+                onClick={scrollToOffer}
+                className="inline-flex items-center gap-2 text-decola-blue font-medium text-sm md:text-base px-6 py-3 rounded-xl border border-cyan-300/60 bg-white/70 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 backdrop-blur-sm w-[85%] sm:w-auto justify-center"
+                style={{ boxShadow: "0 1px 6px rgba(29,78,216,0.08)" }}
+              >
+                Quero conhecer o método
+                <ArrowRight className="w-4 h-4 opacity-70" />
+              </button>
+            </div>
 
           </motion.div>
         </section>

@@ -1,0 +1,146 @@
+Refaça o fluxo visual entre a Hero Section e a seção da VSL para deixar a landing mais fluida, moderna e harmoniosa com a identidade da Decola Kids.
+
+OBJETIVO:
+A hero atualmente fica “vazia” sem CTA, mas o botão verde anterior estava forte demais e competindo visualmente com a VSL.
+
+Ajustar toda essa transição para melhorar:
+
+* continuidade visual
+* hierarquia de atenção
+* estética premium
+* conversão mobile
+
+━━━━━━━━━━━
+HERO SECTION
+━━━━━━━━━━━
+
+Manter:
+
+* logo
+* headline
+* subheadline
+* elementos decorativos espaciais
+
+Adicionar novamente um CTA na hero, mas transformando ele em um CTA secundário/discreto.
+
+Novo texto do botão:
+“Quero conhecer o método”
+
+O botão da hero deve:
+
+* ser menor que o CTA da VSL
+* aparência elegante
+* visual clean
+* fundo branco/translúcido
+* borda azul turquesa suave
+* texto azul escuro
+* hover leve
+* sombra extremamente suave
+* sem glow exagerado
+* sem aparência agressiva
+* manter identidade infantil premium
+
+No mobile:
+
+* largura ~85%
+* altura menor
+* mais espaçamento abaixo do botão
+
+━━━━━━━━━━━
+VSL SECTION
+━━━━━━━━━━━
+
+A seção da VSL deve:
+
+* continuar logo após a hero
+* parecer parte natural da página
+* manter visual clean e leve
+* fundo claro igual ao restante do site
+
+Adicionar:
+
+* pequenas estrelas decorativas suaves
+* glow espacial discreto
+* fade-in suave ao aparecer
+
+O card da VSL deve:
+
+* ter fundo branco/translúcido
+* bordas arredondadas
+* sombra leve
+* leve glassmorphism
+* aparência premium
+
+━━━━━━━━━━━
+AJUSTAR TAMANHO DA VSL
+━━━━━━━━━━━
+
+O vídeo está grande demais no mobile.
+
+Reduzir:
+
+* aproximadamente 10% a 15% da altura total visual da VSL
+* mantendo proporção vertical correta
+
+O vídeo deve:
+
+* continuar responsivo
+* ficar elegante
+* sem ocupar toda a tela
+* deixar mais conteúdo visível sem scroll excessivo
+
+━━━━━━━━━━━
+CTA PRINCIPAL DA VSL
+━━━━━━━━━━━
+
+Manter o CTA abaixo da VSL como CTA principal da página.
+
+Texto:
+“QUERO ACESSAR AGORA”
+
+Esse CTA deve:
+
+* continuar maior que o CTA da hero
+* usar gradiente azul escuro + azul royal + turquesa
+* brilho leve
+* hover suave
+* animação pulsante discreta
+* aparência premium moderna
+
+━━━━━━━━━━━
+VTURB / CONVERTEAI
+━━━━━━━━━━━
+
+A VTurb está exibindo:
+“Você já começou a assistir esse vídeo”
+
+Isso prejudica conversão e passa sensação estranha para tráfego frio.
+
+Remover completamente:
+
+* resume playback
+* continuar assistindo
+* retomada automática
+
+Garantir que o player:
+
+* sempre abra do início
+* autoplay muted funcionando
+* sem mensagens de retomada
+* sem aparência de vídeo reutilizado
+
+━━━━━━━━━━━
+RESULTADO FINAL
+━━━━━━━━━━━
+
+A landing precisa parecer:
+
+* premium
+* moderna
+* infantil
+* limpa
+* espacial
+* emocional
+* altamente otimizada para conversão
+
+A transição entre Hero → VSL deve ficar natural, fluida e visualmente agradável no mobile.
