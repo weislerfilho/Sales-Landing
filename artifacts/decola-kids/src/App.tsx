@@ -62,6 +62,7 @@ function VSLSection() {
 
   return (
     <motion.section
+      id="vsl"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -354,7 +355,7 @@ function Home() {
 
             <div className="flex justify-center mb-2">
               <button
-                onClick={scrollToOffer}
+                onClick={() => document.getElementById("vsl")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 text-decola-blue font-medium text-sm md:text-base px-6 py-3 rounded-xl border border-cyan-300/60 bg-white/70 hover:bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 backdrop-blur-sm w-[85%] sm:w-auto justify-center"
                 style={{ boxShadow: "0 1px 6px rgba(29,78,216,0.08)" }}
               >
