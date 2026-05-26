@@ -13,7 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Heart, BookOpen, Star, Sparkles, Book, Lock, ShieldCheck, ArrowRight, Play, BookMarked } from "lucide-react";
 import { motion } from "framer-motion";
 import NotFound from "@/pages/not-found";
-import VslTest from "@/pages/vsl-test";
 
 const queryClient = new QueryClient();
 
@@ -684,7 +683,6 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/vsl-test" component={VslTest} />
       <Route component={NotFound} />
     </Switch>
   );
