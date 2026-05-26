@@ -34,6 +34,18 @@ declare global {
    Static render only — never unmounts, never rerenders.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
+  useEffect(() => {
+    if ((window as any).__vturbPlayerLoaded) return;
+
+    const script = document.createElement("script");
+    script.src =
+      "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a1540ee32c028fa1395779e/v4/player.js";
+    script.async = true;
+    document.head.appendChild(script);
+
+    (window as any).__vturbPlayerLoaded = true;
+  }, []);
+
   return (
     <section
       id="vsl"
