@@ -8,6 +8,16 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html">
     <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+    <script>
+      try {
+        var _vid = '6a150ff474d91fbf632df4c5';
+        Object.keys(localStorage).forEach(function(k) {
+          if (k.indexOf(_vid) !== -1 || k.indexOf('smartplayer') !== -1 || k.indexOf('converteai') !== -1 || k.indexOf('vturb') !== -1) {
+            localStorage.removeItem(k);
+          }
+        });
+      } catch(e) {}
+    </script>
     <link rel="preload" href="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/player.js" as="script">
     <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
     <link rel="preload" href="https://cdn.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/6a150fe274d91fbf632df47d/main.m3u8" as="fetch">
@@ -15,7 +25,6 @@
     <link rel="dns-prefetch" href="https://scripts.converteai.net">
     <link rel="dns-prefetch" href="https://images.converteai.net">
     <link rel="dns-prefetch" href="https://license.vturb.com">
-    <script id="vturb-sdk" type="text/javascript" src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js" async></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
