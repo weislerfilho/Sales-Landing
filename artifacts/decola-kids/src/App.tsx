@@ -75,9 +75,6 @@ function VSLSection() {
       <div className="max-w-[900px] mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-8 md:mb-10">
-          <Badge variant="outline" className="mb-4 bg-blue-50 text-decola-blue border-blue-200">
-            Veja por dentro
-          </Badge>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight mb-3">
             Veja como o método <span className="text-decola-orange">Decola Kids</span><br className="hidden sm:block" /> transforma o aprendizado infantil
           </h2>
@@ -338,15 +335,6 @@ function Home() {
               Com apenas 15 minutos por dia usando o Método Decola Kids™.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={scrollToOffer}
-                className="btn-cta-pulse bg-decola-green hover:bg-green-600 text-white border-green-700 text-lg py-7 px-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
-              >
-                Quero ajudar meu filho agora
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </div>
 
           </motion.div>
         </section>
@@ -413,7 +401,6 @@ function Home() {
                 Tudo que você precisa para seu filho começar a ler <span className="text-decola-blue">esta semana</span>
               </h2>
               <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                Não é uma pasta de PDFs.<br />
                 É um sistema completo para você aplicar hoje, sem precisar pesquisar, organizar ou adivinhar o próximo passo.
               </p>
             </div>
@@ -485,7 +472,6 @@ function Home() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
               className="text-center mb-12"
             >
-              <Badge variant="outline" className="mb-4 bg-blue-50 text-blue-700 border-blue-200">Veja por dentro</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Veja por dentro do Decola Kids</h2>
               <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
                 Antes de decidir, veja exatamente o que você vai usar com seu filho no dia a dia
