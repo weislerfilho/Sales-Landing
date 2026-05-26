@@ -23,17 +23,9 @@ const queryClient = new QueryClient();
    DOM entirely to the browser; React will not reconcile it.
    ============================================================ */
 const VTurbEmbed = React.memo(function VTurbEmbed() {
-  useEffect(() => {
-    if (!document.getElementById("vturb-sdk")) {
-      const s = document.createElement("script");
-      s.id = "vturb-sdk";
-      s.type = "text/javascript";
-      s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-      s.async = true;
-      document.head.appendChild(s);
-    }
-  }, []);
-
+  // No effects — SDK is loaded once globally via index.html <head>.
+  // This component is a pure render: dangerouslySetInnerHTML sets the
+  // iframe HTML once and React never reconciles or touches it again.
   return (
     <div
       dangerouslySetInnerHTML={{
