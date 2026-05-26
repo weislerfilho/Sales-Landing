@@ -1,0 +1,137 @@
+A VTurb está funcionando parcialmente, porém o SmartPlayer entra em loop de sessão/carregamento:
+
+* vídeo começa
+* buffering aparece
+* “continuar assistindo” aparece
+* reinicia novamente
+* repete várias vezes
+
+O objetivo agora NÃO é diagnosticar.
+É estabilizar DEFINITIVAMENTE a execução do player.
+
+━━━━━━━━━━━
+AÇÃO NECESSÁRIA
+━━━━━━━━━━━
+
+Refatorar COMPLETAMENTE a implementação da VTurb para impedir qualquer reinicialização do SmartPlayer.
+
+━━━━━━━━━━━
+PROBLEMA PRINCIPAL
+━━━━━━━━━━━
+
+O sdk.js e/ou o iframe estão sendo reexecutados/reinicializados em algum momento do lifecycle do app.
+
+Preciso que:
+
+* o script execute UMA única vez
+* o iframe seja criado UMA única vez
+* o player nunca mais seja tocado pelo React
+
+━━━━━━━━━━━
+IMPLEMENTAÇÃO OBRIGATÓRIA
+━━━━━━━━━━━
+
+1. Criar um componente VSL totalmente isolado.
+
+2. Esse componente deve:
+
+* montar apenas uma vez
+* nunca rerenderizar
+* nunca desmontar
+* nunca atualizar
+
+3. Usar:
+   React.memo()
+
+4. Usar:
+   useRef()
+
+para impedir múltiplas injeções do script.
+
+━━━━━━━━━━━
+MUITO IMPORTANTE
+━━━━━━━━━━━
+
+ANTES de adicionar o sdk.js verificar:
+
+```js
+window.__vturbLoaded
+```
+
+Se existir:
+
+* NÃO carregar novamente.
+
+Se não existir:
+
+* carregar script
+* definir:
+
+```js
+window.__vturbLoaded = true
+```
+
+━━━━━━━━━━━
+IFRAME
+━━━━━━━━━━━
+
+O iframe deve:
+
+* ser criado apenas uma vez
+* nunca recriar
+* nunca mudar src
+* nunca sofrer rerender
+
+━━━━━━━━━━━
+PROIBIDO
+━━━━━━━━━━━
+
+NÃO usar:
+
+* dangerouslySetInnerHTML recriando conteúdo
+* appendChild em rerender
+* useEffect sem proteção
+* motion/framer-motion
+* IntersectionObserver
+* suspense
+* lazy loading
+* conditional rendering do player
+* remount por viewport
+* StrictMode no player
+
+━━━━━━━━━━━
+ESTABILIDADE
+━━━━━━━━━━━
+
+Garantir:
+
+* sdk.js existe apenas uma vez no DOM
+* vturb-smartplayer existe apenas uma vez
+* iframe existe apenas uma vez
+* React nunca toca novamente no player após mount
+
+━━━━━━━━━━━
+VISUAL
+━━━━━━━━━━━
+
+NÃO alterar:
+
+* design da seção
+* CTA
+* layout visual
+* responsividade
+
+Alterar apenas a implementação técnica do player.
+
+━━━━━━━━━━━
+RESULTADO ESPERADO
+━━━━━━━━━━━
+
+O vídeo deve:
+
+* carregar uma vez
+* iniciar normalmente
+* não mostrar loop de buffering
+* não mostrar “continuar assistindo” repetidamente
+* não reiniciar
+* tocar continuamente desktop e mobile
