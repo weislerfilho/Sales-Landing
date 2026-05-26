@@ -3,48 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preload" href="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html">
-  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-  <link rel="preload" href="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/player.js" as="script">
-  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-  <link rel="preload" href="https://cdn.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/6a152c6bd5f1680e510ada35/main.m3u8" as="fetch">
-  <link rel="dns-prefetch" href="https://cdn.converteai.net">
-  <link rel="dns-prefetch" href="https://scripts.converteai.net">
-  <link rel="dns-prefetch" href="https://images.converteai.net">
-  <link rel="dns-prefetch" href="https://license.vturb.com">
+  <title>VSL</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; background: transparent; overflow: hidden; }
-    #player-wrapper { width: 100%; height: 100%; }
-    #ifr_6a152c76d5f1680e510ada41_wrapper { margin: 0 auto; width: 100%; height: 100%; }
-    #ifr_6a152c76d5f1680e510ada41_aspect { position: relative; width: 100%; height: 100%; }
-    #ifr_6a152c76d5f1680e510ada41 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+    }
+    #wrapper {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 400px;
+    }
+    #aspect {
+      position: relative;
+      padding: 177.77777777777777% 0 0 0;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
-  <div id="player-wrapper">
-    <script type="text/javascript">
-      if (!window.__vturbLoaded) {
-        window.__vturbLoaded = true;
-        var s = document.createElement("script");
-        s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-        s.async = true;
-        document.head.appendChild(s);
-      }
-    </script>
-
-    <div id="ifr_6a152c76d5f1680e510ada41_wrapper">
-      <div id="ifr_6a152c76d5f1680e510ada41_aspect">
-        <iframe
-          frameborder="0"
-          allowfullscreen
-          src="about:blank"
-          id="ifr_6a152c76d5f1680e510ada41"
-          referrerpolicy="origin"
-          onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)+'&t=0'">
-        </iframe>
-      </div>
+  <div id="wrapper">
+    <div id="aspect">
+      <iframe
+        id="ifr_6a152c76d5f1680e510ada41"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; fullscreen"
+        src="about:blank"
+        referrerpolicy="origin"
+        onload="this.onload=null;this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html';"
+      ></iframe>
     </div>
   </div>
+
+  <script type="text/javascript">
+    var s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+    s.async = true;
+    document.head.appendChild(s);
+  </script>
 </body>
 </html>

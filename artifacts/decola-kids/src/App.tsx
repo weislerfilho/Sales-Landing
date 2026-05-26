@@ -17,42 +17,18 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VSL Section — VTurb SDK embed (sdk.js + onload src swap).
+   VSL Section — VTurb runs in an isolated /vsl.html page.
+   React only renders a plain <iframe src="/vsl.html">.
+   No sdk.js, no scripts, no hooks, no refs in this component.
    React.memo: never re-renders after mount.
-   sdk.js injected once via global guard (__vturbSdkLoaded).
-   iframe src set imperatively on its own onload event.
    Debug logs confirm: 1 mount / 0 unmounts / 0 rerenders.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
   const renderCount = useRef(0);
   renderCount.current += 1;
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     console.log("[VSL] mount — render count:", renderCount.current);
-
-    // Inject sdk.js exactly once per page lifetime
-    if (!(window as any).__vturbSdkLoaded) {
-      (window as any).__vturbSdkLoaded = true;
-      const s = document.createElement("script");
-      s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-      s.async = true;
-      document.head.appendChild(s);
-    }
-
-    // Set iframe src via onload (VTurb's standard embed pattern)
-    const iframe = iframeRef.current;
-    if (iframe) {
-      iframe.onload = function () {
-        iframe.onload = null;
-        iframe.src =
-          "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a152c76d5f1680e510ada41/v4/embed.html" +
-          (location.search || "?") +
-          "&vl=" +
-          encodeURIComponent(location.href);
-      };
-    }
-
     return () => {
       console.log("[VSL] UNMOUNT — this should never appear");
     };
@@ -78,33 +54,24 @@ const VSLSection = React.memo(function VSLSection() {
           </p>
         </div>
 
-        {/* Video card */}
+        {/* Video card — VTurb runs isolated inside /vsl.html */}
         <div
-          className="mx-auto rounded-3xl border border-slate-100 shadow-xl"
+          className="mx-auto rounded-3xl border border-slate-100 shadow-xl overflow-hidden"
           style={{ background: "#ffffff", maxWidth: 432, padding: "16px 16px 20px" }}
         >
-          <div
-            id="ifr_6a152c76d5f1680e510ada41_aspect"
-            style={{ position: "relative", paddingTop: "177.77777777777777%" }}
-          >
-            <iframe
-              ref={iframeRef}
-              id="ifr_6a152c76d5f1680e510ada41"
-              src="about:blank"
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; fullscreen"
-              referrerPolicy="origin"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none",
-              }}
-            />
-          </div>
+          <iframe
+            src="/vsl.html"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; fullscreen"
+            style={{
+              border: "none",
+              width: "100%",
+              aspectRatio: "9/16",
+              display: "block",
+              borderRadius: "12px",
+            }}
+          />
         </div>
 
         {/* CTA Button */}
