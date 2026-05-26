@@ -31,7 +31,7 @@ const VTurbEmbed = React.memo(function VTurbEmbed() {
       dangerouslySetInnerHTML={{
         __html: `
           <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin:0 auto;width:100%;max-width:340px;">
-            <div style="position:relative;padding:177.77777777777777% 0 0 0;">
+            <div id="ifr_6a150ff474d91fbf632df4c5_aspect" style="position:relative;padding:177.77777777777777% 0 0 0;">
               <iframe
                 id="ifr_6a150ff474d91fbf632df4c5"
                 frameborder="0"
