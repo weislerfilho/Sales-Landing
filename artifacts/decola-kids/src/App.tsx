@@ -17,38 +17,35 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
-   VTurb player — isolated, static, never re-renders.
-
-   _vslSid: computed ONCE when the JS module first loads (not in an
-   effect, not in render). A unique session ID per page load forces
-   VTurb to treat every visit as a fresh session, bypassing its
-   cross-origin iframe localStorage (which we cannot clear) and
-   preventing the "continuar assistindo" prompt.
-
-   React.memo with no props = React NEVER re-renders this subtree.
-   dangerouslySetInnerHTML = browser owns the iframe DOM entirely.
+   VTurb player — isolated, static, mounts ONCE, never re-renders.
+   React.memo with no props = React never touches this subtree again.
+   dangerouslySetInnerHTML = browser owns the entire iframe DOM.
+   sdk.js is injected here once via the static HTML string.
    ============================================================ */
-const _vslSid = Date.now();
-
 const VTurbEmbed = React.memo(function VTurbEmbed() {
   return (
     <div
       dangerouslySetInnerHTML={{
         __html: `
-          <div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin:0 auto;width:100%;max-width:340px;">
-            <div id="ifr_6a150ff474d91fbf632df4c5_aspect" style="position:relative;padding:177.77777777777777% 0 0 0;">
-              <iframe
-                id="ifr_6a150ff474d91fbf632df4c5"
-                frameborder="0"
-                allowfullscreen
-                allow="autoplay; fullscreen"
-                referrerpolicy="origin"
-                src="about:blank"
-                style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-                onload="this.onload=null,this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)+'&sid=${_vslSid}&t=0'">
-              </iframe>
-            </div>
-          </div>
+<script type="text/javascript">
+var s=document.createElement("script");
+s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js",
+s.async=!0,document.head.appendChild(s);
+</script>
+
+<div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
+  <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a150ff474d91fbf632df4c5_aspect">
+    <iframe
+      frameborder="0"
+      allowfullscreen
+      src="about:blank"
+      id="ifr_6a150ff474d91fbf632df4c5"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+      referrerpolicy="origin"
+      onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)">
+    </iframe>
+  </div>
+</div>
         `,
       }}
     />
@@ -56,8 +53,9 @@ const VTurbEmbed = React.memo(function VTurbEmbed() {
 });
 
 /* ============================================================
-   VSL Section — plain static <section>, no motion, no observers.
-   Also wrapped in React.memo so parent re-renders don't touch it.
+   VSL Section — plain static <section>, no motion, no observers,
+   no backdrop-filter, no transforms on the video wrapper.
+   Also wrapped in React.memo so parent re-renders never touch it.
    ============================================================ */
 const VSLSection = React.memo(function VSLSection() {
   return (
@@ -76,12 +74,12 @@ const VSLSection = React.memo(function VSLSection() {
           </p>
         </div>
 
-        {/* Video card — completely static, no backdrop-filter, no transforms */}
+        {/* Video card — static white card, no backdrop-filter, no CSS transforms */}
         <div
           className="mx-auto rounded-3xl border border-slate-100 shadow-xl"
           style={{
             background: "#ffffff",
-            maxWidth: 380,
+            maxWidth: 432,
             padding: "16px 16px 20px",
           }}
         >

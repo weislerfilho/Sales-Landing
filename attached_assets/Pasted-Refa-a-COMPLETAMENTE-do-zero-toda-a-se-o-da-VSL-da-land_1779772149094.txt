@@ -1,0 +1,185 @@
+Refaça COMPLETAMENTE do zero toda a seção da VSL da landing page Decola Kids.
+
+A implementação atual da VTurb está quebrada:
+
+* vídeo reinicia
+* buffering infinito
+* carregamento em loop
+* player trava
+* comportamento instável desktop e mobile
+
+NÃO tentar corrigir a implementação atual.
+
+APAGAR COMPLETAMENTE:
+
+* seção VSL antiga
+* wrappers antigos
+* scripts antigos
+* hooks antigos
+* observers
+* animações relacionadas ao player
+* lógica anterior da VTurb
+* qualquer integração existente da ConverteAI
+
+━━━━━━━━━━━
+OBJETIVO
+━━━━━━━━━━━
+
+Criar uma implementação nova, limpa, simples e extremamente estável.
+
+A prioridade absoluta é:
+
+* estabilidade
+* evitar reinicialização
+* evitar buffering infinito
+* impedir rerender do player
+* impedir reinjeção do script
+
+━━━━━━━━━━━
+IMPLEMENTAÇÃO TÉCNICA
+━━━━━━━━━━━
+
+Criar um componente ISOLADO para a VTurb.
+
+Esse componente deve:
+
+* montar apenas UMA vez
+* nunca rerenderizar
+* nunca desmontar
+* nunca reinicializar o player
+
+Usar:
+
+* React.memo()
+* componente estático
+* sem state
+* sem props mutáveis
+* sem observers
+* sem hooks desnecessários
+
+━━━━━━━━━━━
+PROIBIDO
+━━━━━━━━━━━
+
+NÃO usar:
+
+* Framer Motion
+* whileInView
+* IntersectionObserver
+* lazy loading customizado
+* reinjeção de scripts
+* appendChild manual repetido
+* useEffect que recria player
+* hydration dinâmica
+* suspense
+* transforms CSS no player
+* backdrop-filter no wrapper do vídeo
+
+━━━━━━━━━━━
+HEAD GLOBAL
+━━━━━━━━━━━
+
+Inserir EXATAMENTE este código de otimização/preload no HEAD GLOBAL da aplicação e garantir que execute apenas UMA vez:
+
+```html
+<link rel="preload" href="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html">
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/6a150fe274d91fbf632df47d/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+```
+
+IMPORTANTE:
+
+* inserir apenas UMA vez
+* não duplicar no DOM
+* não reinserir em rerender
+* não colocar dentro da VSL
+
+━━━━━━━━━━━
+EMBED VTURB
+━━━━━━━━━━━
+
+Na seção da VSL inserir EXATAMENTE este embed usando HTML bruto estático:
+
+```html
+<script type="text/javascript">
+var s=document.createElement("script");
+s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js",
+s.async=!0,document.head.appendChild(s);
+</script>
+
+<div id="ifr_6a150ff474d91fbf632df4c5_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
+  <div style="position: relative; padding: 177.77777777777777% 0 0 0;" id="ifr_6a150ff474d91fbf632df4c5_aspect">
+    <iframe
+      frameborder="0"
+      allowfullscreen
+      src="about:blank"
+      id="ifr_6a150ff474d91fbf632df4c5"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+      referrerpolicy="origin"
+      onload="this.onload=null, this.src='https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)">
+    </iframe>
+  </div>
+</div>
+```
+
+━━━━━━━━━━━
+MUITO IMPORTANTE
+━━━━━━━━━━━
+
+O embed deve:
+
+* ser renderizado com dangerouslySetInnerHTML
+* React NÃO pode reconciliar o conteúdo interno
+* React NÃO pode tocar no DOM do player após mount
+* o sdk.js deve executar apenas UMA vez
+
+Garantir:
+
+* nenhum appendChild duplicado
+* nenhum mount duplicado
+* nenhuma reinicialização do iframe
+* nenhuma reinserção do script
+
+━━━━━━━━━━━
+STRICT MODE
+━━━━━━━━━━━
+
+Verificar React.StrictMode.
+
+Se estiver causando dupla execução:
+
+* isolar completamente o componente VTurb
+  OU
+* impedir que o embed execute duas vezes em desenvolvimento
+
+━━━━━━━━━━━
+VISUAL
+━━━━━━━━━━━
+
+Manter:
+
+* design clean atual
+* fundo claro
+* card premium branco/translúcido
+* bordas arredondadas
+* sombra leve
+* identidade espacial suave da marca
+
+━━━━━━━━━━━
+RESULTADO ESPERADO
+━━━━━━━━━━━
+
+O player deve:
+
+* carregar apenas uma vez
+* tocar normalmente
+* não reiniciar
+* não entrar em loop
+* não mostrar buffering infinito
+* funcionar corretamente desktop e mobile
