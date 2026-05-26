@@ -15,6 +15,94 @@ import NotFound from "@/pages/not-found";
 const queryClient = new QueryClient();
 
 /* ============================================================
+   VSL Section — VTurb embed + CTA
+   ============================================================ */
+function VSLSection() {
+  useEffect(() => {
+    if (document.getElementById("vturb-sdk")) return;
+    const s = document.createElement("script");
+    s.id = "vturb-sdk";
+    s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+    s.async = true;
+    document.head.appendChild(s);
+  }, []);
+
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="py-16 px-4 md:px-6"
+      style={{
+        background: "linear-gradient(135deg, #0a0f2e 0%, #0d1b6e 40%, #1a3a8f 70%, #0e7490 100%)"
+      }}
+    >
+      <div className="max-w-[900px] mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8 md:mb-10">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-3">
+            Veja como o método Decola Kids transforma o aprendizado infantil
+          </h2>
+          <p className="text-base md:text-lg text-blue-200 font-medium">
+            Aprender brincando faz a criança evoluir muito mais rápido
+          </p>
+        </div>
+
+        {/* VTurb embed */}
+        <div
+          className="rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+          style={{ background: "#000" }}
+        >
+          <div
+            id="ifr_6a150ff474d91fbf632df4c5_wrapper"
+            style={{ margin: "0 auto", width: "100%", maxWidth: "400px" }}
+          >
+            <div
+              style={{ position: "relative", paddingTop: "177.77777777777777%", width: "100%" }}
+              id="ifr_6a150ff474d91fbf632df4c5_aspect"
+            >
+              <iframe
+                frameBorder={0}
+                allowFullScreen
+                src="about:blank"
+                id="ifr_6a150ff474d91fbf632df4c5"
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                referrerPolicy="origin"
+                onLoad={(e) => {
+                  const el = e.currentTarget;
+                  el.onload = null;
+                  el.src =
+                    "https://scripts.converteai.net/8af2e3e2-c3a5-4ba8-893b-3e3861965366/players/6a150ff474d91fbf632df4c5/v4/embed.html" +
+                    (location.search || "?") +
+                    "&vl=" +
+                    encodeURIComponent(location.href);
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="mt-8 md:mt-10 flex justify-center">
+          <button
+            onClick={scrollToOffer}
+            className="vsl-cta-btn group relative inline-flex items-center gap-3 text-white font-extrabold text-lg md:text-xl py-5 px-10 rounded-2xl shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
+            style={{
+              background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 50%, #06b6d4 100%)",
+              border: "2px solid rgba(255,255,255,0.15)"
+            }}
+          >
+            <span>QUERO ACESSAR AGORA</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+          </button>
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
+/* ============================================================
    Decorative animated elements (sutis, leves, on-brand)
    ============================================================ */
 function FloatingStar({ className = "", size = 16, delay = 0 }: { className?: string; size?: number; delay?: number }) {
@@ -249,6 +337,9 @@ function Home() {
 
           </motion.div>
         </section>
+
+        {/* VSL */}
+        <VSLSection />
 
         {/* 3. DOR EMOCIONAL */}
         <section className="bg-slate-50 py-16 md:py-24 px-6 relative">
