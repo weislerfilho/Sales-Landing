@@ -490,13 +490,15 @@ function Home() {
                   <h3 className="text-2xl font-bold mb-6 text-white">Comprando hoje, você leva:</h3>
                   
                   <div className="space-y-4 mb-8">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 bg-decola-blue/20 border border-decola-blue/30 rounded-xl px-4 py-3">
                       <CheckCircle2 className="w-6 h-6 text-decola-green shrink-0" />
-                      <span className="text-lg font-medium">Acesso Completo Decola Kids</span>
+                      <span className="text-lg font-bold text-white">Acesso Completo Decola Kids</span>
                     </div>
                     
                     <div className="pt-4 border-t border-slate-700/50">
-                      <p className="text-sm font-bold text-slate-400 mb-3 uppercase tracking-wider">Bônus Exclusivos:</p>
+                      <p className="text-xs font-black text-decola-yellow mb-3 uppercase tracking-widest flex items-center gap-2">
+                        <Sparkles className="w-3.5 h-3.5" /> Bônus Exclusivos Inclusos:
+                      </p>
                       
                       {[
                         { title: "Rotina de 15 minutos", value: "R$ 14,90" },
@@ -506,59 +508,71 @@ function Home() {
                         { title: "Plano semanal passo a passo", value: "R$ 14,90" },
                         { title: "Jogos de alfabetização", value: "R$ 17,90" },
                         { title: "Checklist de evolução", value: "R$ 9,90" },
+                        { title: "Caderno de coordenação motora", value: "R$ 19,90" },
+                        { title: "Atividades para concentração", value: "R$ 22,90" },
                       ].map((bonus, i) => (
-                        <div key={i} className="flex justify-between items-center py-2">
+                        <div key={i} className={`flex justify-between items-center py-2 px-2 rounded-lg ${i >= 7 ? "bg-decola-blue/10 border border-decola-blue/20 mb-1" : ""}`}>
                           <div className="flex items-center gap-2">
-                            <Sparkles className="w-4 h-4 text-decola-yellow shrink-0" />
-                            <span className="text-slate-200">{bonus.title}</span>
+                            <Sparkles className={`w-4 h-4 shrink-0 ${i >= 7 ? "text-decola-blue" : "text-decola-yellow"}`} />
+                            <span className={`text-sm ${i >= 7 ? "text-white font-semibold" : "text-slate-200"}`}>
+                              {bonus.title}
+                              {i >= 7 && <span className="ml-2 text-[10px] font-black bg-decola-blue/30 text-decola-yellow px-1.5 py-0.5 rounded uppercase tracking-wide">Novo</span>}
+                            </span>
                           </div>
-                          <span className="text-slate-500 line-through text-sm shrink-0">{bonus.value}</span>
+                          <span className="text-slate-500 line-through text-xs shrink-0 ml-2">{bonus.value}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   
-                  <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 flex flex-wrap gap-2 justify-between items-center">
-                    <span className="text-slate-300 text-sm sm:text-base">Valor total de todo o material:</span>
-                    <span className="text-red-400 font-bold line-through text-sm sm:text-base">R$ 97,00</span>
+                  <div className="bg-gradient-to-r from-red-950/60 to-slate-800/60 rounded-xl p-4 border border-red-500/30 flex flex-wrap gap-2 justify-between items-center">
+                    <span className="text-slate-300 text-sm sm:text-base font-medium">Valor total de todo o material:</span>
+                    <span className="text-red-400 font-black line-through text-base sm:text-lg">R$ 167,00</span>
                   </div>
                 </div>
 
                 {/* Right: Checkout */}
-                <div className="bg-white text-slate-900 rounded-3xl p-5 sm:p-8 text-center flex flex-col justify-center items-center shadow-2xl relative min-w-0">
-                  <div className="absolute -top-4 bg-red-500 text-white font-bold px-6 py-1.5 rounded-full text-sm animate-pulse">
+                <div className="bg-white text-slate-900 rounded-3xl p-5 sm:p-8 text-center flex flex-col justify-center items-center relative min-w-0" style={{ boxShadow: "0 8px 48px rgba(13,27,110,0.18), 0 2px 12px rgba(29,78,216,0.10)" }}>
+                  <div className="absolute -top-4 bg-red-500 text-white font-black px-6 py-2 rounded-full text-sm tracking-wide animate-pulse shadow-lg shadow-red-500/40">
                     OFERTA ESPECIAL
                   </div>
 
-                  <p className="text-slate-500 font-medium mb-3 mt-2">Acesso completo com todos os bônus:</p>
+                  <p className="text-slate-500 font-medium mb-2 mt-3 text-sm">Acesso completo com todos os bônus:</p>
 
-                  <div className="mb-3">
-                    <span className="text-base text-slate-500 font-medium">
-                      Valor total: <span className="line-through decoration-red-500 decoration-2">R$ 97,00</span>
-                    </span>
+                  <div className="mb-4 flex items-center justify-center gap-2">
+                    <span className="text-sm text-slate-400 font-medium">De</span>
+                    <span className="text-lg text-slate-400 font-bold line-through decoration-red-500 decoration-2">R$ 167,00</span>
+                    <span className="text-sm text-slate-400 font-medium">por</span>
                   </div>
 
-                  <div className="relative w-full mb-2">
-                    <div className="absolute -top-2 -right-1 sm:-right-2 bg-red-600 text-white font-extrabold text-xs sm:text-sm px-3 py-1.5 rounded-full shadow-lg rotate-[8deg] border-2 border-white">
+                  <div className="relative w-full mb-4">
+                    <div className="absolute -top-3 -right-2 z-10 flex items-center justify-center bg-red-600 text-white font-black text-sm px-4 py-2 rounded-full shadow-xl shadow-red-600/50 rotate-[6deg] border-2 border-white" style={{ fontSize: "0.95rem" }}>
                       89% OFF
                     </div>
-                    <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-decola-yellow/40 rounded-2xl py-5 px-4">
-                      <p className="text-sm md:text-base font-bold text-slate-700 uppercase tracking-wide mb-1">Hoje por apenas</p>
-                      <p className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-decola-blue tracking-tighter leading-none">R$10,90</p>
+                    <div className="rounded-2xl py-6 px-4 border-2 border-decola-blue/30" style={{ background: "linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #e0f2fe 100%)" }}>
+                      <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Hoje por apenas</p>
+                      <p className="text-6xl sm:text-7xl font-black tracking-tighter leading-none" style={{ color: "#0d1b6e" }}>R$17</p>
+                      <p className="text-2xl font-bold text-slate-500 -mt-1">,00</p>
                     </div>
                   </div>
 
-                  <p className="text-sm font-semibold mb-6 bg-blue-50 border border-blue-100 py-2 px-4 rounded-lg w-full" style={{ color: "#1d4ed8" }}>
-                    Você recebe acesso completo ao método e todos os bônus por uma <span className="font-extrabold">condição especial de lançamento</span>.
+                  <p className="text-sm font-semibold mb-5 bg-blue-50 border border-blue-200 py-3 px-4 rounded-xl w-full leading-relaxed" style={{ color: "#1d4ed8" }}>
+                    Tudo o que você precisa para <span className="font-black">acelerar a alfabetização infantil</span> em casa, de forma leve, divertida e organizada.
                   </p>
 
                   <a href="https://decola-kids.pay.yampi.com.br/r/R2J8BILZT0" target="_blank" rel="noopener noreferrer" className="w-full block">
-                    <button className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-6 px-8 rounded-2xl text-xl font-bold hover:-translate-y-1 transition-all duration-300 whitespace-nowrap" style={{ background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 50%, #06b6d4 100%)", boxShadow: "0 4px 24px rgba(29,78,216,0.35)" }}>
+                    <button
+                      className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-5 px-8 rounded-2xl text-xl font-black hover:-translate-y-1 active:translate-y-0 transition-all duration-300 whitespace-nowrap tracking-wide"
+                      style={{
+                        background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 45%, #0ea5e9 80%, #06b6d4 100%)",
+                        boxShadow: "0 6px 32px rgba(29,78,216,0.45), 0 2px 8px rgba(6,182,212,0.25), inset 0 1px 0 rgba(255,255,255,0.15)"
+                      }}
+                    >
                       QUERO COMEÇAR AGORA
                     </button>
                   </a>
 
-                  <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400 font-medium">
+                  <div className="mt-4 flex items-center justify-center gap-2 text-xs text-slate-400 font-medium">
                     <ShieldCheck className="w-4 h-4 text-green-500" />
                     Compra 100% segura e protegida
                   </div>
