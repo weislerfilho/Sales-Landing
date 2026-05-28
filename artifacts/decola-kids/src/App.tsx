@@ -545,14 +545,13 @@ function Home() {
                     <span className="text-sm text-slate-400 font-medium">por</span>
                   </div>
 
-                  <div className="relative w-full mb-4">
-                    <div className="absolute -top-3 -right-2 z-10 flex items-center justify-center bg-red-600 text-white font-black text-sm px-4 py-2 rounded-full shadow-xl shadow-red-600/50 rotate-[6deg] border-2 border-white" style={{ fontSize: "0.95rem" }}>
+                  <div className="relative w-full mb-4 mt-2">
+                    <div className="absolute -top-4 -right-2 z-10 flex items-center justify-center bg-red-600 text-white font-black px-4 py-2 rounded-full shadow-xl shadow-red-600/50 rotate-[6deg] border-2 border-white" style={{ fontSize: "0.9rem" }}>
                       89% OFF
                     </div>
-                    <div className="rounded-2xl py-6 px-4 border-2 border-decola-blue/30" style={{ background: "linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #e0f2fe 100%)" }}>
-                      <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Hoje por apenas</p>
-                      <p className="text-6xl sm:text-7xl font-black tracking-tighter leading-none" style={{ color: "#0d1b6e" }}>R$17</p>
-                      <p className="text-2xl font-bold text-slate-500 -mt-1">,00</p>
+                    <div className="rounded-2xl pt-8 pb-6 px-4 border-2 border-decola-blue/30" style={{ background: "linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #e0f2fe 100%)" }}>
+                      <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-2">Hoje por apenas</p>
+                      <p className="text-6xl sm:text-7xl font-black tracking-tighter leading-none" style={{ color: "#0d1b6e" }}>R$17,00</p>
                     </div>
                   </div>
 
@@ -562,7 +561,7 @@ function Home() {
 
                   <a href="https://decola-kids.pay.yampi.com.br/r/R2J8BILZT0" target="_blank" rel="noopener noreferrer" className="w-full block">
                     <button
-                      className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-5 px-8 rounded-2xl text-xl font-black hover:-translate-y-1 active:translate-y-0 transition-all duration-300 whitespace-nowrap tracking-wide"
+                      className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-5 px-4 rounded-2xl text-base sm:text-xl font-black hover:-translate-y-1 active:translate-y-0 transition-all duration-300 tracking-wide text-center leading-tight"
                       style={{
                         background: "linear-gradient(135deg, #0d1b6e 0%, #1d4ed8 45%, #0ea5e9 80%, #06b6d4 100%)",
                         boxShadow: "0 6px 32px rgba(29,78,216,0.45), 0 2px 8px rgba(6,182,212,0.25), inset 0 1px 0 rgba(255,255,255,0.15)"
