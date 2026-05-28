@@ -9,28 +9,6 @@ args = ["pnpm", "store", "prune"]
 env = { "CI" = "true" }
 
 [workflows]
-runButton = "Project"
-
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Start application"
-
-[[workflows.workflow]]
-name = "Start application"
-author = "agent"
-
-[workflows.workflow.metadata]
-outputType = "webview"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "PORT=20371 BASE_PATH=/ pnpm --filter @workspace/decola-kids run dev & PORT=8080 NODE_ENV=development pnpm --filter @workspace/api-server run dev & wait"
-waitForPort = 20371
 
 [agent]
 stack = "PNPM_WORKSPACE"
@@ -43,6 +21,10 @@ timeoutMs = 20000
 [[ports]]
 localPort = 3000
 externalPort = 3002
+
+[[ports]]
+localPort = 3001
+externalPort = 3003
 
 [[ports]]
 localPort = 8080
