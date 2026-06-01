@@ -691,7 +691,7 @@ function Home() {
             </div>
             <div className="flex justify-center mb-8">
               <a
-                href="https://wa.me/5547999931244?text=Ol%C3%A1!%20%F0%9F%98%8A%0ATenho%20interesse%20no%20Decola%20Kids%20e%20queria%20entender%20melhor%20como%20funciona%20o%20acesso%20ao%20material%2C%20os%20b%C3%B4nus%20inclusos%20e%20como%20ele%20pode%20ajudar%20meu%20filho%20na%20alfabetiza%C3%A7%C3%A3o."
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] active:bg-[#17a852] text-white font-bold px-6 py-3 rounded-full transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-[#25D366]/30 text-sm"
@@ -710,7 +710,7 @@ function Home() {
 
         {/* Floating WhatsApp button */}
         <a
-          href="https://wa.me/5547999931244?text=Ol%C3%A1!%20%F0%9F%98%8A%0ATenho%20interesse%20no%20Decola%20Kids%20e%20queria%20entender%20melhor%20como%20funciona%20o%20acesso%20ao%20material%2C%20os%20b%C3%B4nus%20inclusos%20e%20como%20ele%20pode%20ajudar%20meu%20filho%20na%20alfabetiza%C3%A7%C3%A3o."
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-transform duration-200"
@@ -735,6 +735,9 @@ function Router() {
     </Switch>
   );
 }
+
+const whatsappMsg = "Olá! 😊\nTenho interesse no Decola Kids e queria entender melhor como funciona o acesso ao material, os bônus inclusos e como ele pode ajudar meu filho na alfabetização.";
+const whatsappUrl = `https://wa.me/5547999931244?text=${encodeURIComponent(whatsappMsg)}`;
 
 function App() {
   return (
