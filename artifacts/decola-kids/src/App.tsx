@@ -559,7 +559,7 @@ function Home() {
                     Tudo o que você precisa para <span className="font-black">acelerar a alfabetização infantil</span> em casa, de forma leve, divertida e organizada.
                   </p>
 
-                  <a href="https://decola-kids.pay.yampi.com.br/r/R2J8BILZT0" target="_blank" rel="noopener noreferrer" className="w-full block">
+                  <a href="https://checkout.decolakids.site/VCCL1O8SD3B6" target="_blank" rel="noopener noreferrer" className="w-full block">
                     <button
                       className="vsl-cta-btn w-full inline-flex items-center justify-center text-white py-5 px-4 rounded-2xl text-base sm:text-xl font-black hover:-translate-y-1 active:translate-y-0 transition-all duration-300 tracking-wide text-center leading-tight"
                       style={{
