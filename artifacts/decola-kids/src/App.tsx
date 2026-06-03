@@ -450,7 +450,7 @@ function Home() {
 
             <div className="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8 text-center">
               <p className="text-base md:text-lg text-slate-700 leading-relaxed">
-                Tudo isso foi pensado para mães que não têm tempo sobrando, não têm formação em pedagogia e não querem mais transformar a lição de casa em conflito.<br className="hidden sm:block" />
+                Tudo isso foi pensado para mães e pais que não têm tempo sobrando, não têm formação em pedagogia e não querem mais transformar a lição de casa em conflito.<br className="hidden sm:block" />
                 <span className="font-bold text-decola-blue mt-2 block">Se esse é o seu caso, o Decola Kids foi feito para você.</span>
               </p>
             </div>
@@ -605,7 +605,7 @@ function Home() {
         <section className="py-20 px-6 bg-slate-50 overflow-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Mães como você que já viram o resultado</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Mães e pais como você que já viram o resultado</h2>
             </div>
 
             <Carousel
